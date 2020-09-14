@@ -1,0 +1,48 @@
+<!-- 
+File Name :-sidebar.component.html	   	Created Date :-14-09-2020     Created By :- Faiser I (Emp. Id : VTPL/BLR/006)
+	
+Description :- this is the side bar component, this component is used to add other components in sidebar,					
+	
+============================================================================================================================
+  Sl.No			    Description			                                Modified By		              	      Modified Date	
+============================================================================================================================
+	
+	
+ -->
+
+<mat-nav-list>
+  <div class="profile-card">
+    <img src="assets/img/doctor/doctor.png" alt="{{ currentUserAvatar }}" class="my-3" />
+    <div class="header">
+      <h5>{{currentUserName}}</h5>
+      <h6>doc.{{currentUserName}}@hms.com</h6>
+    </div>
+  </div>
+
+  <mat-divider></mat-divider>
+  <h2 matSubheader>Pages</h2>
+
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="">
+    <mat-icon>dvr</mat-icon>Dashboard
+  </a>
+
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/doctorshome/listdoctor">
+    <mat-icon>local_hospital</mat-icon>Doctors
+  </a>
+
+  <!-- Faiser side bar starts here -->
+
+  <!-- Faiser side bar ends here -->
+
+
+  <!-- Manjunath side bar starts here -->
+
+
+  <!-- Manjunath side bar ends here -->
+
+
+  <!-- Vikash Kumar Jha side bar starts here -->
+
+
+  <!-- Vikash Kumar Jha side bar ends here -->
+</mat-nav-list>
