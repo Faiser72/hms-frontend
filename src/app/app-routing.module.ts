@@ -11,6 +11,8 @@ import { AppointmenthomeComponent } from './modules/admin/appointment/appointmen
 import { EditappointmentComponent } from './modules/admin/appointment/editappointment/editappointment.component';
 import { ListappointmentComponent } from './modules/admin/appointment/listappointment/listappointment.component';
 import { PreliminarycheckComponent } from './modules/admin/appointment/preliminarycheck/preliminarycheck.component';
+import { DepartmentComponent } from './modules/admin/master/department/department/department.component';
+import { DoctorrolemasterComponent } from './modules/admin/master/doctormaster/doctorrolemaster/doctorrolemaster.component';
 
 const routes: Routes = [
   {
@@ -41,6 +43,10 @@ const routes: Routes = [
 
         ],
       },
+
+      { path: "departmentMaster", component: DepartmentComponent },
+
+      { path: "doctorRoleMaster", component: DoctorrolemasterComponent },
 
       // Faiser routing ends here
 

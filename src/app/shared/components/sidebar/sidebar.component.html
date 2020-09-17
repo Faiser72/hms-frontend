@@ -36,6 +36,28 @@ Description :- this is the side bar component, this component is used to add oth
 
   <!-- Faiser side bar starts here -->
 
+
+  <span>
+    <mat-list-item (click)="showSubmenu = !showSubmenu" class="parent mb-1" (click)="toggleSubmenu('master_submenu')">
+      <mat-icon>menu_book</mat-icon>
+      <span class="full-width">Master</span>
+      <mat-icon class="menu-button" [ngClass]="{'rotated' : showSubmenu}">expand_more</mat-icon>
+    </mat-list-item>
+    <!-- <div class="submenu" [ngClass]="{'expanded' : showSubmenu}" id="master_submenu">
+      <a mat-list-item routerLinkActive="list-item-active" routerLink="/addbillconfiguration">
+        <mat-icon> attach_money</mat-icon>Bill Configuration
+      </a>
+    </div> -->
+    <div class="submenu" [ngClass]="{'expanded' : showSubmenu}" id="master_submenu">
+      <a mat-list-item routerLinkActive="list-item-active" routerLink="/departmentMaster">
+        <mat-icon> local_hospital</mat-icon>Department
+      </a>
+      <a mat-list-item routerLinkActive="list-item-active" routerLink="/doctorRoleMaster">
+        <mat-icon> local_hospital</mat-icon>Doctor Role
+      </a>
+    </div>
+
+  </span>
   <!-- Faiser side bar ends here -->
 
 

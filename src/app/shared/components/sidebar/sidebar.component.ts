@@ -12,4 +12,41 @@ export class SidebarComponent implements OnInit {
   ngOnInit() {
   }
 
+
+  /* for submenu Start here... */
+  showSubmenu: boolean = false;
+  showFrontDeskSubmenu: boolean = false;
+  showDoctorSubmenu: boolean = false;
+
+
+  toggleSubmenu(submenu: string) {
+    let element = document.getElementById(submenu);
+    if (element.style.display == '' || element.style.display == 'none') {
+      element.style.display = 'block';
+    }
+    else {
+      element.style.display = 'none';
+    }
+  }
+
+  toggleFrontDeskSubmenu(submenu: string) {
+    let element = document.getElementById(submenu);
+    if (element.style.display == '' || element.style.display == 'none') {
+      element.style.display = 'block';
+    }
+    else {
+      element.style.display = 'none';
+    }
+  }
+
+  toggleDoctorSubmenu(submenu: string) {
+    let element = document.getElementById(submenu);
+    if (element.style.display == '' || element.style.display == 'none') {
+      element.style.display = 'block';
+    }
+    else {
+      element.style.display = 'none';
+    }
+  }
+  /* Ends here. */
 }

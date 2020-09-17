@@ -12,6 +12,7 @@ import { EditappointmentComponent } from './appointment/editappointment/editappo
 import { ListappointmentComponent } from './appointment/listappointment/listappointment.component';
 import { PreliminarycheckComponent } from './appointment/preliminarycheck/preliminarycheck.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { MasterModule } from './master/master.module';
 
 @NgModule({
   declarations: [AdddoctorsComponent, EditdoctorsComponent, ListdoctorsComponent,AddappointmentComponent,
@@ -36,6 +37,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     MatSelectModule,
     MatCheckboxModule,
     MatAutocompleteModule,
+    MasterModule
   ]
 })
 export class AdminModule { }
