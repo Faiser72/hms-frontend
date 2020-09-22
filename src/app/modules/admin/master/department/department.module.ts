@@ -5,7 +5,7 @@ import { DepartmentComponent } from './department/department.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [DepartmentComponent],
   imports: [
     CommonModule
   ]

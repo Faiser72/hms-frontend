@@ -15,7 +15,7 @@ import {
   MatSort,
   MatIconModule,
   MatCardModule,
-  MatProgressBarModule,
+  MatProgressBarModule, MatStepperModule
 } from "@angular/material";
 import { SharedModule } from "src/app/shared/shared.module";
 import { RouterModule } from "@angular/router";
@@ -24,9 +24,10 @@ import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 import { DashboardComponent } from "src/app/modules/dashboard/dashboard.component";
 import { AdminModule } from "src/app/modules/admin/admin.module";
 import { DoctorshomeComponent } from "src/app/modules/admin/doctors/doctorshome/doctorshome.component";
+import { PatienthomeComponent } from 'src/app/modules/admin/patient/patienthome/patienthome.component';
 import { AppointmenthomeComponent } from 'src/app/modules/admin/appointment/appointmenthome/appointmenthome.component';
 @NgModule({
-  declarations: [DefaultComponent, DashboardComponent, DoctorshomeComponent,AppointmenthomeComponent],
+  declarations: [DefaultComponent, DashboardComponent, DoctorshomeComponent,PatienthomeComponent,AppointmenthomeComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -47,7 +48,8 @@ import { AppointmenthomeComponent } from 'src/app/modules/admin/appointment/appo
     MatCardModule,
     MatProgressBarModule,
     MatSlideToggleModule,
-    MatDividerModule
+    MatDividerModule,
+    
   ],
 })
 export class DefaultModule { }

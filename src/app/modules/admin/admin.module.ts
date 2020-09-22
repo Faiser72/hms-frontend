@@ -5,17 +5,30 @@ import { AdddoctorsComponent } from './doctors/adddoctors/adddoctors.component';
 import { EditdoctorsComponent } from './doctors/editdoctors/editdoctors.component';
 import { ListdoctorsComponent } from './doctors/listdoctors/listdoctors.component';
 import { DoctorshomeComponent } from './doctors/doctorshome/doctorshome.component';
-import { MatAutocompleteModule, MatButtonModule, MatCheckboxModule, MatDatepickerModule, MatDividerModule, MatIconModule, MatInputModule, MatListModule, MatPaginatorModule, MatRadioModule, MatSelectModule, MatSnackBarModule, MatTableModule } from '@angular/material';
+import { MatAutocompleteModule, MatButtonModule, MatCheckboxModule, MatDatepickerModule, MatDividerModule, MatIconModule, MatInputModule, MatListModule, MatPaginatorModule, MatRadioModule, MatSelectModule, MatSnackBarModule, MatStepperModule, MatTableModule } from '@angular/material';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import { AddappointmentComponent } from './appointment/addappointment/addappointment.component';
-import { EditappointmentComponent } from './appointment/editappointment/editappointment.component';
-import { ListappointmentComponent } from './appointment/listappointment/listappointment.component';
-import { PreliminarycheckComponent } from './appointment/preliminarycheck/preliminarycheck.component';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { AddpatientComponent } from './patient/addpatient/addpatient.component';
+import { PatientlistComponent } from './patient/patientlist/patientlist.component';
+import { EditpatientComponent } from './patient/editpatient/editpatient.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PrintPatientCardComponent } from './patient/print-patient-card/print-patient-card.component';
 import { MasterModule } from './master/master.module';
+import { EditappointmentComponent } from './appointment/editappointment/editappointment.component';
+import { PreliminarycheckComponent } from './appointment/preliminarycheck/preliminarycheck.component';
+import { ListappointmentComponent } from './appointment/listappointment/listappointment.component';
+import { AddappointmentComponent } from './appointment/addappointment/addappointment.component';
+import { DeletedlistdoctorComponent } from './doctors/deletedlistdoctor/deletedlistdoctor.component';
 
 @NgModule({
-  declarations: [AdddoctorsComponent, EditdoctorsComponent, ListdoctorsComponent,AddappointmentComponent,
+  declarations: [AdddoctorsComponent, 
+    EditdoctorsComponent, 
+    ListdoctorsComponent,
+    DeletedlistdoctorComponent,
+    AddpatientComponent,
+    PatientlistComponent,
+    EditpatientComponent,
+    PrintPatientCardComponent,
+    AddappointmentComponent,
     EditappointmentComponent,
     ListappointmentComponent,
     PreliminarycheckComponent,],
@@ -23,17 +36,18 @@ import { MasterModule } from './master/master.module';
     CommonModule,
     MatDividerModule,
     MatFormFieldModule,
+    MatStepperModule,
+    ReactiveFormsModule,
+    FormsModule,
     MatInputModule,
+    MatButtonModule,
     MatDatepickerModule,
     MatIconModule,
     MatRadioModule,
-    MatButtonModule,
     MatListModule,
     MatTableModule,
     MatPaginatorModule,
     MatSnackBarModule,
-    ReactiveFormsModule,
-    FormsModule,
     MatSelectModule,
     MatCheckboxModule,
     MatAutocompleteModule,

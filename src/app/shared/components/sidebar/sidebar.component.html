@@ -11,64 +11,114 @@ Description :- this is the side bar component, this component is used to add oth
  -->
 
 <mat-nav-list>
-  <div class="profile-card">
-    <img src="assets/img/doctor/doctor.png" alt="{{ currentUserAvatar }}" class="my-3" />
-    <div class="header">
-      <h5>{{currentUserName}}</h5>
-      <h6>doc.{{currentUserName}}@hms.com</h6>
+    <div class="profile-card">
+        <img src="assets/img/doctor/doctor.png" alt="{{ currentUserAvatar }}" class="my-3" />
+        <div class="header">
+            <h5>{{currentUserName}}</h5>
+            <h6>doc.{{currentUserName}}@hms.com</h6>
+        </div>
     </div>
-  </div>\
 
-  <mat-divider></mat-divider>
-  <h2 matSubheader>Pages</h2>
+    <mat-divider></mat-divider>
+    <h2 matSubheader>Pages</h2>
 
-  <a mat-list-item routerLinkActive="list-item-active" routerLink="">
-    <mat-icon>dvr</mat-icon>Dashboard
-  </a>
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="">
+        <mat-icon>dvr</mat-icon>Dashboard
+    </a>
 
-  <a mat-list-item routerLinkActive="list-item-active" routerLink="/doctorshome/listdoctor">
-    <mat-icon>local_hospital</mat-icon>Doctors
-  </a>
+    <!-- Faiser side bar starts here -->
 
-  <a mat-list-item routerLinkActive="list-item-active" routerLink="/appointmenthome/listappointment">
-    <mat-icon>meeting_room</mat-icon>Appointment
-  </a>
+    <span>
+        <mat-list-item (click)="showDoctorSubmenu = !showDoctorSubmenu" class="parent mb-1"
+            (click)="toggleDoctorSubmenu('doctor_submenu')">
+            <mat-icon>local_hospital</mat-icon>
+            <span class="full-width">Doctors</span>
+            <mat-icon class="menu-button" [ngClass]="{'rotated' : showDoctorSubmenu}">expand_more</mat-icon>
+        </mat-list-item>
+        <!-- <div class="submenu" [ngClass]="{'expanded' : showSubmenu}" id="master_submenu">
+          <a mat-list-item routerLinkActive="list-item-active" routerLink="/addbillconfiguration">
+            <mat-icon> attach_money</mat-icon>Bill Configuration
+          </a>
+        </div> -->
+        <div class="submenu" [ngClass]="{'expanded' : showDoctorSubmenu}" id="doctor_submenu">
+            <a mat-list-item routerLinkActive="list-item-active" routerLink="/doctorshome/listdoctor">
+                <mat-icon> local_hospital</mat-icon>Doctors
+            </a>
+            <a mat-list-item routerLinkActive="list-item-active" routerLink="/doctorshome/deletedlistdoctor">
+                <mat-icon> delete_sweep</mat-icon>Deleted Doctors List
+            </a>
+        </div>
+    </span>
 
-  <!-- Faiser side bar starts here -->
+    <span>
+        <mat-list-item (click)="showSubmenu = !showSubmenu" class="parent mb-1"
+            (click)="toggleSubmenu('master_submenu')">
+            <mat-icon>menu_book</mat-icon>
+            <span class="full-width">Master</span>
+            <mat-icon class="menu-button" [ngClass]="{'rotated' : showSubmenu}">expand_more</mat-icon>
+        </mat-list-item>
+        <!-- <div class="submenu" [ngClass]="{'expanded' : showSubmenu}" id="master_submenu">
+          <a mat-list-item routerLinkActive="list-item-active" routerLink="/addbillconfiguration">
+            <mat-icon> attach_money</mat-icon>Bill Configuration
+          </a>
+        </div> -->
+        <div class="submenu" [ngClass]="{'expanded' : showSubmenu}" id="master_submenu">
+            <a mat-list-item routerLinkActive="list-item-active" routerLink="/departmentMaster">
+                <mat-icon>business</mat-icon>Department
+            </a>
+            <a mat-list-item routerLinkActive="list-item-active" routerLink="/labtestMaster">
+                <mat-icon> colorize</mat-icon>Lab Test Master
+            </a>
+            <a mat-list-item routerLinkActive="list-item-active" routerLink="/scheduleMaster/listschedule">
+                <mat-icon>schedule</mat-icon>Schedule
+            </a>
+            <a mat-list-item routerLinkActive="list-item-active" routerLink="/hospitalDetailHome/hospitalDetailList">
+                <mat-icon>local_hospital</mat-icon>Hospital Detail
+            </a>
+            <a mat-list-item routerLinkActive="list-item-active" routerLink="/staffHome/staffList">
+                <mat-icon>chrome_reader_mode</mat-icon>Staff
+            </a>
+            <a mat-list-item routerLinkActive="list-item-active" routerLink="/doctorRoleMaster">
+                <mat-icon> local_hospital</mat-icon>Doctor Role
+            </a>
+            <a mat-list-item routerLinkActive="list-item-active" routerLink="/paymentCategory">
+                <mat-icon> payment</mat-icon>Payment Category
+            </a>
+            <a mat-list-item routerLinkActive="list-item-active" routerLink="/receiptCategory">
+                <mat-icon> receipt</mat-icon>Receipt Category
+            </a>
+        </div>
+    </span>
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/appointmenthome/listappointment">
+        <mat-icon>meeting_room</mat-icon>Appointment
+    </a>
+
+    <!-- Faiser side bar ends here -->
 
 
-  <span>
-    <mat-list-item (click)="showSubmenu = !showSubmenu" class="parent mb-1" (click)="toggleSubmenu('master_submenu')">
-      <mat-icon>menu_book</mat-icon>
-      <span class="full-width">Master</span>
-      <mat-icon class="menu-button" [ngClass]="{'rotated' : showSubmenu}">expand_more</mat-icon>
+    <!-- Manjunath side bar starts here -->
+
+
+    <mat-list-item (click)="showPatientmenu = !showPatientmenu" class="parent mb-1"
+        (click)="togglePatientSubmenu('Patien_submenu')">
+        <mat-icon>local_hotel</mat-icon>
+        <span class="full-width">Patient</span>
+        <mat-icon class="menu-button" [ngClass]="{'rotated' : showPatientmenu}">expand_more</mat-icon>
     </mat-list-item>
-    <!-- <div class="submenu" [ngClass]="{'expanded' : showSubmenu}" id="master_submenu">
-      <a mat-list-item routerLinkActive="list-item-active" routerLink="/addbillconfiguration">
-        <mat-icon> attach_money</mat-icon>Bill Configuration
-      </a>
-    </div> -->
-    <div class="submenu" [ngClass]="{'expanded' : showSubmenu}" id="master_submenu">
-      <a mat-list-item routerLinkActive="list-item-active" routerLink="/departmentMaster">
-        <mat-icon> local_hospital</mat-icon>Department
-      </a>
-      <a mat-list-item routerLinkActive="list-item-active" routerLink="/doctorRoleMaster">
-        <mat-icon> local_hospital</mat-icon>Doctor Role
-      </a>
+    <div class="submenu" [ngClass]="{'expanded' : showPatientmenu}" id="Patien_submenu">
+        <a mat-list-item routerLinkActive="list-item-active" routerLink="/patienthome/listpatient">
+            <mat-icon> supervisor_account</mat-icon>Patient Registration
+        </a>
+        <a mat-list-item routerLinkActive="list-item-active" routerLink="/patienthome/printPatientCard">
+            <mat-icon>local_printshop</mat-icon>Print Patient Card
+        </a>
     </div>
 
-  </span>
-  <!-- Faiser side bar ends here -->
+    <!-- Manjunath side bar ends here -->
 
 
-  <!-- Manjunath side bar starts here -->
+    <!-- Vikash Kumar Jha side bar starts here -->
 
 
-  <!-- Manjunath side bar ends here -->
-
-
-  <!-- Vikash Kumar Jha side bar starts here -->
-
-
-  <!-- Vikash Kumar Jha side bar ends here -->
+    <!-- Vikash Kumar Jha side bar ends here -->
 </mat-nav-list>

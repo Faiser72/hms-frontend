@@ -7,19 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-
-  /* for submenu Start here... */
-  showSubmenu: boolean = false;
-  showFrontDeskSubmenu: boolean = false;
+  showPatientmenu: boolean = false;
   showDoctorSubmenu: boolean = false;
+  showSubmenu: boolean = false;
 
 
-  toggleSubmenu(submenu: string) {
+  togglePatientSubmenu(submenu: string) {
     let element = document.getElementById(submenu);
     if (element.style.display == '' || element.style.display == 'none') {
       element.style.display = 'block';
@@ -28,8 +21,8 @@ export class SidebarComponent implements OnInit {
       element.style.display = 'none';
     }
   }
-
-  toggleFrontDeskSubmenu(submenu: string) {
+  
+  toggleSubmenu(submenu: string) {
     let element = document.getElementById(submenu);
     if (element.style.display == '' || element.style.display == 'none') {
       element.style.display = 'block';
@@ -48,5 +41,9 @@ export class SidebarComponent implements OnInit {
       element.style.display = 'none';
     }
   }
-  /* Ends here. */
+  constructor() { }
+
+  ngOnInit() {
+  }
+
 }

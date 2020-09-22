@@ -1,0 +1,57 @@
+<div class="container-fluid mt-3 p-0">
+    <div class="card shadow-lg">
+        <div class="card-title">
+            <h4 class="text-center main-bg pt-3 mt-1">- Print Patient Card -</h4>
+        </div>
+        <mat-divider class="mx-5"></mat-divider>
+        <form action="" class="form-group customhover" [formGroup]="printPatientCard">
+            <div class="container pt-4">
+                <div class="card w-50 d-flex justify-content-center border-0 mx-auto">
+                    <mat-form-field class="field-full-width">
+                        <mat-label>Patient ID<sup class="text-danger">*</sup></mat-label>
+                        <input matInput placeholder="Ex. AA123311" value="" formControlName="patientId" />
+                    </mat-form-field>
+                    <h6 style="color: red;" *ngIf="printPatientCard.get('patientId') && printPatientCard.get('patientId').touched && printPatientCard.get('patientId').invalid">
+                        Please enter this field</h6>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <button mat-raised-button class="mb-2 mr-3 submit-btn" color="primary" type="submit" (click)="openPrintCard()">
+                    <mat-icon class="mr-2">search</mat-icon>Search
+                </button>
+            </div>
+        </form>
+        <div class="pt-5 pb-5">
+            <div class="card w-50 mx-auto mainCard " *ngIf='openCardValue'>
+                <div class="pl-3 pt-2 pb-2">
+                    <h6>Hospital Name:</h6>
+                    <h6>Address:</h6>
+                    <h6>Phone Number:</h6>
+                    <mat-divider class="mx-5 line"></mat-divider>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="../../../../../assets/Placeholder.jpg" class="img-fluid mt-5">
+                            </div>
+                            <div class="col-md-6">
+                                <div class="pr-3 pt-2">
+                                    <p class="content">Patient ID</p>
+                                    <p class="content">Patient Name</p>
+                                    <p class="content">Age</p>
+                                    <p class="content">Gender</p>
+                                    <p class="content">Registration Date</p>
+                                    <p class="content">BLood Group</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-4">
+                    <button mat-raised-button class="mb-2 mr-3 submit-btn" color="primary" type="submit" (click)="openPrintCard()">
+                        <mat-icon class="mr-2">print</mat-icon>Print
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
