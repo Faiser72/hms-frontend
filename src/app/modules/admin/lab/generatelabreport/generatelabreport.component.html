@@ -1,0 +1,147 @@
+<!-- 
+File Name :-generatelabreport.component.html	   	Created Date :-19-10-2020     Created By :- Faiser I (Emp. Id : VTPL/BLR/006)
+	
+Description :- this component is used to shgow the list of lab tests,					
+	
+============================================================================================================================
+  Sl.No			    Description			                                Modified By		              	      Modified Date	
+============================================================================================================================
+	
+	
+ -->
+
+<div class="container-fluid mt-3 p-0">
+    <div class="card shadow">
+        <div class="card-title">
+            <h4 class="text-center main-bg pt-3 mt-1">- Generate Lab Report -</h4>
+        </div>
+        <!-- <mat-divider class="mx-5"></mat-divider> -->
+
+        <div class="mt-3">
+            <div class="row d-flex justify-content-center mt-4 ml-5 mr-5 w-100 mx-auto">
+                <div class="col-lg-4 col-sm-12 col-md-6  header-text">
+                    <div class="row">
+                        <div class="col">
+                            <p>
+                                Registr Id: {{registerId}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p>
+                                Patient Name:{{patientName}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-12 col-md-6 text-center header-text">
+                    <div class="row">
+                        <div class="col">
+                            <p>
+                                Age: {{age}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p>
+                                Refered Doctor: {{doctorName}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-12 col-md-6 text-center header-text">
+                    <div class="row">
+                        <div class="col">
+                            <p>
+                                Sex: {{sex}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p>
+                                Date:{{date}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <mat-divider class="mx-5"></mat-divider>
+
+
+        <form action="" class="form-group customhover" [formGroup]="generateLabReportForm">
+            <div class="row d-flex justify-content-around mt-4 ml-5 mr-5 w-50 mx-auto">
+                <div class="col-lg-6 col-sm-12 col-md-6">
+                    <mat-form-field class="field-full-width">
+                        <mat-label>Lab Technician <sup class="text-danger">*</sup></mat-label>
+                        <mat-select formControlName="labTechnicianName">
+                            <mat-option *ngFor="let doctor of doctorDetailsList" [value]="doctor">
+                                {{doctor.doctorName}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <p style="color: red;"
+                        *ngIf="generateLabReportForm.get('labTechnicianName') && generateLabReportForm.get('labTechnicianName').touched && generateLabReportForm.get('labTechnicianName').invalid">
+                        Please enter this field</p>
+                </div>
+                <div class="col-lg-6 col-sm-12 col-md-6">
+                    <mat-form-field class="field-full-width">
+                        <mat-label>Test Type <sup class="text-danger">*</sup></mat-label>
+                        <input matInput placeholder="Ex. xyz" value="" formControlName="testType" />
+                    </mat-form-field>
+                    <p style="color: red;"
+                        *ngIf="generateLabReportForm.get('testType') && generateLabReportForm.get('testType').touched && generateLabReportForm.get('testType').invalid">
+                        Please enter this field</p>
+                </div>
+            </div>
+
+            <div class="row d-flex justify-content-around mt-4 ml-5 mr-5 w-50 mx-auto">
+
+                <div class="col-lg-6 col-md-12 col-sm-12 mx-auto">
+                    <mat-form-field class="field-full-width">
+                        <mat-label>Test Sub Type <sup class="text-danger">*</sup></mat-label>
+                        <input matInput placeholder="Ex. xyz" value="" formControlName="testSubType" />
+                    </mat-form-field>
+                    <p style="color: red;"
+                        *ngIf="generateLabReportForm.get('testSubType') && generateLabReportForm.get('testSubType').touched && generateLabReportForm.get('testSubType').invalid">
+                        Please enter this field</p>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12 mx-auto">
+                    <mat-form-field class="field-full-width">
+                        <mat-label>Template <sup class="text-danger">*</sup></mat-label>
+                        <mat-select formControlName="template">
+                            <mat-option *ngFor="let doctor of doctorDetailsList" [value]="doctor">
+                                {{doctor.doctorName}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <p style="color: red;"
+                        *ngIf="generateLabReportForm.get('template') && generateLabReportForm.get('template').touched && generateLabReportForm.get('template').invalid">
+                        Please enter this field</p>
+                </div>
+
+            </div>
+
+            <div class="row d-flex justify-content-around mt-4 ml-5 mr-5">
+                <div class="col-lg-4 col-md-6 col-sm-12">
+
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-around">
+                    <button type="submit" mat-raised-button color="primary">
+                        <mat-icon class="mr-2">save</mat-icon>Generate Report
+                    </button>
+                    <button type="button" mat-raised-button color="accent" (click)='back()'>
+                        <mat-icon class="mr-2">360</mat-icon>Back
+                    </button>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

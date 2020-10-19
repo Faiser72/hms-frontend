@@ -1,0 +1,149 @@
+<div class="container-fluid mt-3 p-0">
+    <div class="card shadow-lg">
+        <div class="card-title">
+            <h4 class="text-center main-bg pt-3 mt-1">- Edit Staff Detail -</h4>
+        </div>
+        <mat-divider class="mx-5"></mat-divider>
+        <form action="" class="form-group customhover" [formGroup]="addStafDetail">
+            <div class="container pt-4">
+                <div class="card w-50 d-flex justify-content-center border-0 mx-auto">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <mat-form-field class="field-full-width">
+                                <mat-label>Staff Name <sup class="text-danger">*</sup></mat-label>
+                                <input matInput placeholder="Ex. Sudhakar" value="" formControlName="staffName" />
+                            </mat-form-field>
+                            <h6 style="color: red;" *ngIf="addStafDetail.get('staffName') && addStafDetail.get('staffName').touched && addStafDetail.get('staffName').invalid">
+                                Please enter this field</h6>
+                        </div>
+                        <div class="col-md-6">
+                            <mat-form-field class="field-full-width">
+                                <mat-label>Date Of Birth <sup class="text-danger">*</sup></mat-label>
+                                <input matInput [matDatepicker]="dob" placeholder="Ex. 7/2/1995" value="" formControlName="Staffdob" />
+                                <mat-datepicker-toggle matSuffix [for]="dob"></mat-datepicker-toggle>
+                                <mat-datepicker #dob></mat-datepicker>
+                            </mat-form-field>
+                            <p style="color: red;" *ngIf="addStafDetail.get('Staffdob') && addStafDetail.get('Staffdob').touched && addStafDetail.get('Staffdob').invalid">
+                                Please select Date of birth</p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <mat-form-field class="field-full-width">
+                                <mat-label>Gender <sup class="text-danger">*</sup></mat-label>
+                                <mat-select formControlName="gender">
+                                    <mat-option *ngFor="let gen of gender" [value]="gen.value">
+                                        {{gen.viewValue}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <p style="color: red;" *ngIf="addStafDetail.get('gender') && addStafDetail.get('gender').touched && addStafDetail.get('gender').invalid">
+                                Please enter this field</p>
+                        </div>
+                        <div class="col-md-6">
+                            <mat-form-field class="field-full-width">
+                                <mat-label> Age<sup class="text-danger">*</sup></mat-label>
+                                <input matInput placeholder="Ex. 22" value="" formControlName="staffAge" />
+                            </mat-form-field>
+                            <h6 style="color: red;" *ngIf="addStafDetail.get('staffAge') && addStafDetail.get('staffAge').touched && addStafDetail.get('staffAge').invalid">
+                                Please enter this field</h6>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <mat-form-field class="field-full-width">
+                                <mat-label>Aadhar Number<sup class="text-danger">*</sup></mat-label>
+                                <input matInput placeholder="Ex. 000000000000" value="" formControlName="aadharNumber" />
+                            </mat-form-field>
+                            <h6 style="color: red;" *ngIf="addStafDetail.get('aadharNumber') && addStafDetail.get('aadharNumber').touched && addStafDetail.get('aadharNumber').invalid">
+                                Please enter this field</h6>
+                        </div>
+                        <div class="col-md-6">
+                            <mat-form-field class="field-full-width">
+                                <mat-label>Staff Role <sup class="text-danger">*</sup></mat-label>
+                                <mat-select formControlName="staffRole">
+                                    <mat-option *ngFor="let rol of staffRole" [value]="rol.value">
+                                        {{rol.viewValue}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <p style="color: red;" *ngIf="addStafDetail.get('staffRole') && addStafDetail.get('staffRole').touched && addStafDetail.get('staffRole').invalid">
+                                Please enter this field</p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <mat-form-field class="field-full-width">
+                                <mat-label>Mail ID <sup class="text-danger">*</sup></mat-label>
+                                <input matInput placeholder="Ex. someone@xyz.com" value="" formControlName="stafMail" />
+                            </mat-form-field>
+                            <h6 style="color: red;" *ngIf="addStafDetail.get('stafMail') && addStafDetail.get('stafMail').touched && addStafDetail.get('stafMail').invalid">
+                                Please enter this field</h6>
+                        </div>
+                        <div class="col-md-6">
+                            <mat-form-field class="field-full-width">
+                                <mat-label>Mobile Number<sup class="text-danger">*</sup></mat-label>
+                                <input matInput placeholder="Ex. 0000000000" value="" formControlName="stafMobileNumber" />
+                            </mat-form-field>
+                            <h6 style="color: red;" *ngIf="addStafDetail.get('stafMobileNumber') && addStafDetail.get('stafMobileNumber').touched && addStafDetail.get('stafMobileNumber').invalid">
+                                Please enter this field</h6>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <mat-form-field class="field-full-width">
+                                <mat-label>Alternative Phone Number<sup class="text-danger">*</sup></mat-label>
+                                <input matInput placeholder="Ex. 0000000000" value="" formControlName="alternativeMobileNumber" />
+                            </mat-form-field>
+                            <h6 style="color: red;" *ngIf="addStafDetail.get('stafMail') && addStafDetail.get('stafMail').touched && addStafDetail.get('stafMail').invalid">
+                                Please enter this field</h6>
+                        </div>
+                        <div class="col-md-6">
+                            <mat-form-field class="field-full-width">
+                                <mat-label>Blood Group <sup class="text-danger">*</sup></mat-label>
+                                <mat-select formControlName="bloodGroup">
+                                    <mat-option *ngFor="let blood of bloodGroup" [value]="blood.value">
+                                        {{blood.viewValue}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <p style="color: red;" *ngIf="addStafDetail.get('bloodGroup') && addStafDetail.get('bloodGroup').touched && addStafDetail.get('bloodGroup').invalid">
+                                Please enter this field</p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <mat-form-field class="field-full-width">
+                                <mat-label>Address <sup class="text-danger">*</sup></mat-label>
+                                <textarea matInput placeholder="Ex. #83, 6th cross opposite to kfc, jalahalli bangalore" formControlName="address"></textarea>
+                                <mat-icon matSuffix color="primary">home</mat-icon>
+                            </mat-form-field>
+                            <p style="color: red;" *ngIf="addStafDetail.get('address') && addStafDetail.get('address').touched && addStafDetail.get('address').invalid">
+                                Please enter this field</p>
+                        </div>
+                    </div>
+
+                    <div class="container">
+                        <div class="row d-flex justify-content-center p-4">
+                            <div class="pr-3 mt-2">
+                                <button type="submit" matStepperNext mat-raised-button color="primary">
+                                    <mat-icon class="mr-2">save</mat-icon>Submit
+                              </button>
+                            </div>
+                            <div class="mt-2">
+                                <button type="reset" mat-raised-button color="accent">
+                                    <mat-icon class="mr-2">360</mat-icon>Reset
+                                  </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

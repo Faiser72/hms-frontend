@@ -1,0 +1,22 @@
+<!-- 
+File Name :-default.component.html	   	Created Date :-14-09-2020     Created By :- Faiser I (Emp. Id : VTPL/BLR/006)
+	
+Description :- this is the main component which is used to load all the component					
+	
+============================================================================================================================
+  Sl.No			    Description			                                Modified By		              	      Modified Date	
+============================================================================================================================
+	
+	
+ -->
+
+<app-header (toggleSideBarForMe)="sideBarToggler()" (darkModeSwitched)="switchMode($event)"></app-header>
+<mat-drawer-container class="container-fluid">
+    <mat-drawer mode="side" [opened]="sideBarOpen">
+        <app-sidebar></app-sidebar>
+    </mat-drawer>
+    <mat-drawer-content>
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
+</mat-drawer-container>
+<!-- <app-footer></app-footer> -->

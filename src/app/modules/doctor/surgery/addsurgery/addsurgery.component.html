@@ -1,0 +1,289 @@
+<!-- 
+File Name :-addsurgery.component.html	   	Created Date :-07-10-2020     Created By :- Vikash Kumar (Emp. Id : VTPL/BLR/005)
+	
+Description :- this component is used to add nwe surgery,					
+	
+============================================================================================================================
+  Sl.No			    Description			                                Modified By		              	      Modified Date	
+============================================================================================================================
+	
+	
+ -->
+<div class="container-fluid mt-3 p-0">
+    <div class="card shadow">
+        <div class="card-title">
+            <h4 class="text-center main-bg pt-3 mt-1">- Add Surgery -</h4>
+        </div>
+        <div class="mt-3">
+            <div class="row d-flex justify-content-center mt-4 ml-5 mr-5 w-100">
+                <div class="col-lg-4 col-sm-12 col-md-6  header-text">
+                    <div class="row">
+                        <div class="col">
+                            <p>
+                                Reg Id:
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p>
+                                Patient Name:
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-12 col-md-6  header-text">
+                    <div class="row">
+                        <div class="col">
+                            <p>
+                                Reg Date:
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p>
+                                Sex:
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-12 col-md-6  header-text">
+                    <div class="row">
+                        <div class="col">
+                            <p>
+                                Age:
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p>
+                                Blood Group:
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <mat-divider class="mx-5"></mat-divider>
+        <form action="" class="form-group customhover" [formGroup]="addSurgeryForm">
+            <div class="row d-flex justify-content-around mt-4 ml-5 mr-5 w-50 mx-auto">
+                <div class="col-lg-6 col-sm-12 col-md-6">
+                    <!-- <mat-form-field class="field-full-width">
+                        <mat-label>Patient Number <sup class="text-danger">*</sup></mat-label>
+                        <input matInput placeholder="Ex. xyz" value="" formControlName="patientNumber" />
+                    </mat-form-field> -->
+                    <mat-form-field class="field-full-width">
+                        <mat-label>Surgery Name<sup class="text-danger">*</sup></mat-label>
+                        <input matInput placeholder="Ex. xyz" value="" formControlName="surgeryName" />
+                    </mat-form-field>
+                    <p style="color: red;" *ngIf="addSurgeryForm.get('surgeryName') && addSurgeryForm.get('surgeryName').touched && addSurgeryForm.get('surgeryName').invalid">
+                        Please enter this field</p>
+                </div>
+
+                <div class="col-lg-6 col-sm-12 col-md-6">
+                    <mat-form-field class="field-full-width">
+                        <mat-label>Recommended Doctor <sup class="text-danger">*</sup></mat-label>
+                        <mat-select formControlName="recommendedDoctore">
+                            <mat-option *ngFor="let patient of patientDetailsList" [value]="patient">
+                                {{patient.patientNumber}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <p style="color: red;" *ngIf="addSurgeryForm.get('recommendedDoctore') && addSurgeryForm.get('recommendedDoctore').touched && addSurgeryForm.get('recommendedDoctore').invalid">
+                        Please enter this field</p>
+                </div>
+            </div>
+
+            <div class="row d-flex justify-content-around mt-4 ml-5 mr-5 w-50 mx-auto">
+                <div class="col-lg-6 col-sm-12 col-md-6 mt-2">
+                    <!-- <mat-form-field class="field-full-width">
+                        <mat-label>Appointment Date <sup class="text-danger">*</sup></mat-label>
+                        <input matInput [matDatepicker]="appointdate" placeholder="Ex. 7/2/1995" value=""
+                            formControlName="surgeryDate" />
+                        <mat-datepicker-toggle matSuffix [for]="appointdate"></mat-datepicker-toggle>
+                        <mat-datepicker #appointdate></mat-datepicker>
+                    </mat-form-field> -->
+                    <mat-form-field class="field-full-width">
+                        <mat-label>Surgery Date</mat-label>
+                        <input matInput type="date" placeholder="Ex. 7/2/1995" value="" color="primary" formControlName="surgeryDate" id='from' min="{{today}}" />
+                    </mat-form-field>
+                    <p style="color: red;" *ngIf="addSurgeryForm.get('surgeryDate') && addSurgeryForm.get('surgeryDate').touched && addSurgeryForm.get('surgeryDate').invalid">
+                        Please enter this field</p>
+                </div>
+                <div class="col-lg-6 col-sm-12 col-md-6">
+                    <mat-form-field class="field-full-width">
+                        <mat-label>Surgery Time <sup class="text-danger">*</sup></mat-label>
+                        <input matInput type="time" placeholder="Ex. xyz" value="" class="time" formControlName="surgeryTime" />
+                        <mat-icon matSuffix color="primary">access_time</mat-icon>
+                    </mat-form-field>
+                    <p style="color: red;" *ngIf="addSurgeryForm.get('surgeryTime') && addSurgeryForm.get('surgeryTime').touched && addSurgeryForm.get('surgeryTime').invalid">
+                        Please enter this field</p>
+
+                </div>
+            </div>
+
+            <div class="row d-flex justify-content-around mt-4 ml-5 mr-5 w-50 mx-auto">
+
+                <div class="col-lg-6 col-md-12 col-sm-12 mx-auto">
+                    <!-- <mat-form-field class="field-full-width">
+                        <mat-label>Doctor Name <sup class="text-danger">*</sup></mat-label>
+                        <input matInput placeholder="Ex. xyz" value="" formControlName="primarySurgeon" />
+                    </mat-form-field> -->
+                    <mat-form-field class="field-full-width">
+                        <mat-label>Primary Surgeon <sup class="text-danger">*</sup></mat-label>
+                        <mat-select formControlName="primarySurgeon">
+                            <mat-option *ngFor="let doctor of doctorDetailsList" [value]="doctor">
+                                {{doctor.primarySurgeon}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <p style="color: red;" *ngIf="addSurgeryForm.get('primarySurgeon') && addSurgeryForm.get('primarySurgeon').touched && addSurgeryForm.get('primarySurgeon').invalid">
+                        Please enter this field</p>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12 mx-auto">
+                    <!-- <mat-form-field class="field-full-width">
+                        <mat-label>Telephone <sup class="text-danger">*</sup></mat-label>
+                        <span matPrefix>+91 &nbsp;</span>
+                        <input type="tel" matInput placeholder="555-555-1234" formControlName="phoneNumber"
+                            readonly="true">
+                        <mat-icon matSuffix color="primary">phone</mat-icon>
+                    </mat-form-field> -->
+
+                    <mat-form-field class="field-full-width">
+                        <mat-label>Assistant Surgeon <sup class="text-danger">*</sup></mat-label>
+                        <mat-select formControlName="assistantSurgeon">
+                            <mat-option *ngFor="let patient of patientDetailsList" [value]="patient">
+                                {{patient.patientNumber}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <p style="color: red;" *ngIf="addSurgeryForm.get('assistantSurgeon') && addSurgeryForm.get('assistantSurgeon').touched && addSurgeryForm.get('assistantSurgeon').invalid">
+                        Please Select Departmentr</p>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-around mt-4 ml-5 mr-5 w-50 mx-auto">
+
+                <div class="col-lg-6 col-md-12 col-sm-12 mx-auto">
+                    <!-- <mat-form-field class="field-full-width">
+                        <mat-label>Doctor Name <sup class="text-danger">*</sup></mat-label>
+                        <input matInput placeholder="Ex. xyz" value="" formControlName="primarySurgeon" />
+                    </mat-form-field> -->
+                    <mat-form-field class="field-full-width">
+                        <mat-label>Opration theater<sup class="text-danger">*</sup></mat-label>
+                        <mat-select formControlName="oprationTheatre">
+                            <mat-option *ngFor="let doctor of doctorDetailsList" [value]="doctor">
+                                {{doctor.primarySurgeon}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <p style="color: red;" *ngIf="addSurgeryForm.get('oprationTheatre') && addSurgeryForm.get('oprationTheatre').touched && addSurgeryForm.get('oprationTheatre').invalid">
+                        Please enter this field</p>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12 mx-auto">
+                    <!-- <mat-form-field class="field-full-width">
+                        <mat-label>Telephone <sup class="text-danger">*</sup></mat-label>
+                        <span matPrefix>+91 &nbsp;</span>
+                        <input type="tel" matInput placeholder="555-555-1234" formControlName="phoneNumber"
+                            readonly="true">
+                        <mat-icon matSuffix color="primary">phone</mat-icon>
+                    </mat-form-field> -->
+
+                    <mat-form-field class="field-full-width">
+                        <mat-label>Anesthesist <sup class="text-danger">*</sup></mat-label>
+                        <mat-select formControlName="anesthesist">
+                            <mat-option *ngFor="let patient of patientDetailsList" [value]="patient">
+                                {{patient.patientNumber}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <p style="color: red;" *ngIf="addSurgeryForm.get('anesthesist') && addSurgeryForm.get('anesthesist').touched && addSurgeryForm.get('anesthesist').invalid">
+                        Please Select Departmentr</p>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-around mt-4 ml-5 mr-5 w-50 mx-auto">
+
+                <div class="col-lg-6 col-md-12 col-sm-12 mx-auto">
+                    <!-- <mat-form-field class="field-full-width">
+                        <mat-label>Doctor Name <sup class="text-danger">*</sup></mat-label>
+                        <input matInput placeholder="Ex. xyz" value="" formControlName="primarySurgeon" />
+                    </mat-form-field> -->
+                    <mat-form-field class="field-full-width">
+                        <mat-label>Scrub Nurse <sup class="text-danger">*</sup></mat-label>
+                        <mat-select formControlName="scrubNurse">
+                            <mat-option *ngFor="let doctor of doctorDetailsList" [value]="doctor">
+                                {{doctor.primarySurgeon}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <p style="color: red;" *ngIf="addSurgeryForm.get('scrubNurse') && addSurgeryForm.get('scrubNurse').touched && addSurgeryForm.get('scrubNurse').invalid">
+                        Please enter this field</p>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12 mx-auto">
+                    <!-- <mat-form-field class="field-full-width">
+                        <mat-label>Telephone <sup class="text-danger">*</sup></mat-label>
+                        <span matPrefix>+91 &nbsp;</span>
+                        <input type="tel" matInput placeholder="555-555-1234" formControlName="phoneNumber"
+                            readonly="true">
+                        <mat-icon matSuffix color="primary">phone</mat-icon>
+                    </mat-form-field> -->
+
+                    <mat-form-field class="field-full-width">
+                        <mat-label>Helper <sup class="text-danger">*</sup></mat-label>
+                        <mat-select formControlName="helper">
+                            <mat-option *ngFor="let patient of patientDetailsList" [value]="patient">
+                                {{patient.patientNumber}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <p style="color: red;" *ngIf="addSurgeryForm.get('helper') && addSurgeryForm.get('helper').touched && addSurgeryForm.get('helper').invalid">
+                        Please Select Departmentr</p>
+                </div>
+            </div>
+
+
+            <div class="row d-flex justify-content-around mt-4 ml-5 mr-5 w-50 mx-auto">
+
+                <div class="col-lg-6 col-md-12 col-sm-12 mx-auto">
+
+                    <mat-form-field class="field-full-width">
+                        <mat-label>Follow Up<sup class="text-danger">*</sup></mat-label>
+                        <input matInput placeholder="Ex. xyz" value="" formControlName="followUp" />
+                    </mat-form-field>
+                    <p style="color: red;" *ngIf="addSurgeryForm.get('followUp') && addSurgeryForm.get('followUp').touched && addSurgeryForm.get('followUp').invalid">
+                        Please enter this field</p>
+
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12 mx-auto">
+                    <mat-form-field class="field-full-width">
+                        <mat-label>Operative Notes <sup class="text-danger">*</sup></mat-label>
+                        <input matInput placeholder="Ex. xyz" value="" formControlName="oprativeNotes" />
+                    </mat-form-field>
+                    <p style="color: red;" *ngIf="addSurgeryForm.get('oprativeNotes') && addSurgeryForm.get('oprativeNotes').touched && addSurgeryForm.get('oprativeNotes').invalid">
+                        Please enter this field</p>
+                </div>
+            </div>
+
+
+
+            <div class="row d-flex justify-content-around mt-4 ml-5 mr-5">
+                <div class="col-lg-4 col-md-6 col-sm-12">
+
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-around">
+                    <button type="submit" mat-raised-button color="primary">
+                        <mat-icon class="mr-2">save</mat-icon>Submit
+                    </button>
+                    <button type="reset" mat-raised-button color="accent">
+                        <mat-icon class="mr-2">360</mat-icon>Reset
+                    </button>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,101 @@
+<div class="container-fluid mt-3 p-0">
+    <div class="card shadow">
+        <div class="card-title">
+            <h4 class="text-center main-bg pt-3 mt-1">- Death Report -</h4>
+        </div>
+        <mat-divider class="mx-5"></mat-divider>
+        <form action="" class="form-group customhover" [formGroup]="addAppointmentForm">
+            <div class="row d-flex justify-content-around mt-4 ml-5 mr-5 w-50 mx-auto">
+                <div class="col-lg-6 col-sm-12 col-md-6">
+                    <!-- <mat-form-field class="field-full-width">
+                        <mat-label>Patient Number <sup class="text-danger">*</sup></mat-label>
+                        <input matInput placeholder="Ex. xyz" value="" formControlName="patientNumber" />
+                    </mat-form-field> -->
+                    <mat-form-field class="field-full-width">
+                        <mat-label>Patient Id <sup class="text-danger">*</sup></mat-label>
+                        <input matInput placeholder="Ex. xyz" value="" formControlName="registerId" readonly="true" />
+                    </mat-form-field>
+                    <p style="color: red;" *ngIf="addAppointmentForm.get('registerId') && addAppointmentForm.get('registerId').touched && addAppointmentForm.get('registerId').invalid">
+                        Please enter this field</p>
+                </div>
+                <div class="col-lg-6 col-sm-12 col-md-6">
+                    <mat-form-field class="field-full-width">
+                        <mat-label>Patient Name <sup class="text-danger">*</sup></mat-label>
+                        <input matInput placeholder="Ex. xyz" value="" formControlName="patientName" readonly="true" />
+                    </mat-form-field>
+                    <p style="color: red;" *ngIf="addAppointmentForm.get('patientName') && addAppointmentForm.get('patientName').touched && addAppointmentForm.get('patientName').invalid">
+                        Please enter this field</p>
+                </div>
+            </div>
+
+            <div class="row d-flex justify-content-around mt-4 ml-5 mr-5 w-50 mx-auto">
+
+                <div class="col-lg-6 col-md-12 col-sm-12 mx-auto">
+                    <mat-form-field class="field-full-width">
+                        <mat-label>Death Date<sup class="text-danger">*</sup></mat-label>
+                        <input matInput [matDatepicker]="dob" placeholder="Ex. 7/2/1995" value="" formControlName="RefDoctorName" />
+                        <mat-datepicker-toggle matSuffix [for]="dob"></mat-datepicker-toggle>
+                        <mat-datepicker #dob></mat-datepicker>
+                    </mat-form-field>
+                    <p style="color: red;" *ngIf="addAppointmentForm.get('RefDoctorName') && addAppointmentForm.get('RefDoctorName').touched && addAppointmentForm.get('RefDoctorName').invalid">
+                        Please select Delivery Date </p>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12 mx-auto">
+                    <mat-form-field class="field-full-width">
+                        <mat-label>Gender <sup class="text-danger">*</sup></mat-label>
+                        <mat-select formControlName="refTo">
+                            <mat-option *ngFor="let gen of gender" [value]="gen.value">
+                                {{gen.viewValue}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <p style="color: red;" *ngIf="addAppointmentForm.get('refTo') && addAppointmentForm.get('refTo').touched && addAppointmentForm.get('refTo').invalid">
+                        Please enter this field</p>
+                </div>
+
+            </div>
+
+            <div class="row d-flex justify-content-around mt-4 ml-5 mr-5 w-50 mx-auto">
+                <div class="col-lg-6 col-md-12 col-sm-12 mx-auto">
+                    <mat-form-field class="field-full-width">
+                        <mat-label>Doctor Name <sup class="text-danger">*</sup></mat-label>
+                        <input matInput placeholder="Ex. Sudhakar" value="" formControlName="investigation" />
+                    </mat-form-field>
+                    <h6 style="color: red;" *ngIf="addAppointmentForm.get('investigation') && addAppointmentForm.get('investigation').touched && addAppointmentForm.get('investigation').invalid">
+                        Please enter this field</h6>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12 mx-auto">
+                    <mat-form-field class="field-full-width">
+                        <mat-label>Age<sup class="text-danger">*</sup></mat-label>
+                        <input matInput placeholder="Ex. 25" value="" formControlName="age" />
+                    </mat-form-field>
+                    <h6 style="color: red;" *ngIf="addAppointmentForm.get('age') && addAppointmentForm.get('age').touched && addAppointmentForm.get('age').invalid">
+                        Please enter this field</h6>
+                </div>
+            </div>
+
+
+
+
+
+
+
+            <div class="row d-flex justify-content-around mt-4 ml-5 mr-5">
+                <div class="col-lg-4 col-md-6 col-sm-12">
+
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-around">
+                    <button type="submit" mat-raised-button color="primary">
+                        <mat-icon class="mr-2">save</mat-icon>Submit
+                    </button>
+                    <button type="reset" mat-raised-button color="accent">
+                        <mat-icon class="mr-2">360</mat-icon>Reset
+                    </button>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

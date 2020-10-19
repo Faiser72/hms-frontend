@@ -1,0 +1,137 @@
+<div class="container-fluid mt-3 p-0">
+    <div class="card shadow">
+        <div class="card-title">
+            <h4 class="text-center main-bg pt-3 mt-1">- Add Schedule -</h4>
+        </div>
+        <mat-divider class="mx-5"></mat-divider>
+        <form action="" class="form-group customhover" [formGroup]="addScheduleForm">
+            <div class="row d-flex justify-content-around mt-4 ml-5 mr-5 w-50 mx-auto">
+                <div class="col-lg-6 col-md-12 col-sm-12 mx-auto">
+                    <mat-form-field class="field-full-width">
+                        <mat-label>Doctor Name <sup class="text-danger">*</sup></mat-label>
+                        <mat-select formControlName="doctorName">
+                            <mat-option [value]="null" disabled>Select Doctor</mat-option>
+                            <mat-option *ngFor="let doctor of doctorList" [value]="doctor.value">
+                                {{doctor.viewValue}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <p style="color: red;" *ngIf="addScheduleForm.get('doctorName') && addScheduleForm.get('doctorName').touched && addScheduleForm.get('doctorName').invalid">
+                        Please Select Doctor</p>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12 mx-auto">
+                    <mat-form-field class="field-full-width">
+                        <mat-label>Available Days</mat-label>
+                        <mat-select [formControl]="availableDay">
+                            <!-- multiple -->
+                            <!-- <mat-select-trigger>
+                                {{availableDay.value ? availableDay.value[0] : ''}}
+                                <span *ngIf="availableDay.value?.length > 1" class="example-additional-selection">
+                                    (+{{availableDay.value.length - 1}}
+                                    {{availableDay.value?.length === 2 ? 'other' : 'others'}})
+                                </span>
+                            </mat-select-trigger> -->
+                            <mat-option [value]="null" disabled>Select Days</mat-option>
+                            <mat-option *ngFor="let day of dayList" [value]="day">{{day}}</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="availableDay.hasError('required')">Please Select Available Day</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="row d-flex justify-content-around mt-4 ml-5 mr-5 w-50 mx-auto">
+                <div class="col-lg-6 col-md-12 col-sm-12 mx-auto">
+                    <mat-form-field class="field-full-width">
+                        <mat-label>Department <sup class="text-danger">*</sup></mat-label>
+                        <mat-select formControlName="department">
+                            <mat-option [value]="null" disabled>Select Department</mat-option>
+                            <mat-option *ngFor="let department of departmentList" [value]="department.value">
+                                {{department.viewValue}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <p style="color: red;" *ngIf="addScheduleForm.get('department') && addScheduleForm.get('department').touched && addScheduleForm.get('department').invalid">
+                        Please Select Department</p>
+                </div>
+
+                <div class="col-lg-6 col-md-12 col-sm-12 mx-auto">
+                    <mat-form-field class="field-full-width">
+                        <mat-label>Available Shift<sup class="text-danger">*</sup></mat-label>
+                        <mat-select formControlName="availableShift" (selectionChange)='availableTimeValue($event)'>
+                            <mat-option [value]="null" disabled>Select Shift</mat-option>
+                            <mat-option *ngFor="let availTime of availableTime" [value]="availTime.value">
+                                {{availTime.viewValue}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <p style="color: red;" *ngIf="addScheduleForm.get('availableShift') && addScheduleForm.get('availableShift').touched && addScheduleForm.get('availableShift').invalid">
+                        Please Select Shift</p>
+                </div>
+            </div>
+
+
+
+            <!-- <div class="row d-flex justify-content-around mt-4 ml-5 mr-5 w-50 mx-auto"
+            > -->
+            <!-- <div class="col-lg-6 col-md-12 col-sm-12 mx-auto">
+                <mat-form-field class="field-full-width">
+                    <mat-label>Start Time <sup class="text-danger">*</sup></mat-label>
+                    <input matInput type="time"  value="" class="time"
+                        formControlName="startTime" />
+                    <mat-icon matSuffix color="primary">access_time</mat-icon>
+                </mat-form-field>
+                <p style="color: red;"
+                    *ngIf="addScheduleForm.get('startTime') && addScheduleForm.get('startTime').touched && addScheduleForm.get('startTime').invalid">
+                    Please Select Start Time</p>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12 mx-auto">
+                <mat-form-field class="field-full-width">
+                    <mat-label>End Time <sup class="text-danger">*</sup></mat-label>
+                    <input matInput type="time"  value="" class="time"
+                        formControlName="endTime" />
+                    <mat-icon matSuffix color="primary">access_time</mat-icon>
+                </mat-form-field>
+                <p style="color: red;"
+                    *ngIf="addScheduleForm.get('endTime') && addScheduleForm.get('endTime').touched && addScheduleForm.get('endTime').invalid">
+                    Please Select End Time</p>
+            </div>
+        </div> -->
+            <div class="row d-flex justify-content-around mt-4 ml-5 mr-5 w-50 mx-auto" *ngIf="availableTimeSelectedValue">
+                <div class="col-lg-6 col-md-12 col-sm-12 mx-auto">
+                    <mat-form-field class="field-full-width">
+                        <mat-label>Start Time <sup class="text-danger">*</sup></mat-label>
+                        <input matInput type="time" value="" class="time" formControlName="startTime" />
+                        <!-- <mat-icon matSuffix color="primary">access_time</mat-icon> -->
+                    </mat-form-field>
+                    <p style="color: red;" *ngIf="addScheduleForm.get('startTime') && addScheduleForm.get('startTime').touched && addScheduleForm.get('startTime').invalid">
+                        Please Select Start Time</p>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12 mx-auto">
+                    <mat-form-field class="field-full-width">
+                        <mat-label>End Time <sup class="text-danger">*</sup></mat-label>
+                        <input matInput type="time" value="" class="time" formControlName="endTime" />
+                        <!-- <mat-icon matSuffix color="primary">access_time</mat-icon> -->
+                    </mat-form-field>
+                    <p style="color: red;" *ngIf="addScheduleForm.get('endTime') && addScheduleForm.get('endTime').touched && addScheduleForm.get('endTime').invalid">
+                        Please Select End Time</p>
+                </div>
+            </div>
+
+            <div class="row d-flex justify-content-around mt-4 ml-5 mr-5">
+                <div class="col-lg-4 col-md-6 col-sm-12">
+
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-around">
+                    <button type="submit" mat-raised-button color="primary">
+                        <mat-icon class="mr-2">save</mat-icon>Submit
+                    </button>
+                    <button type="reset" mat-raised-button color="accent">
+                        <mat-icon class="mr-2">360</mat-icon>Reset
+                    </button>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

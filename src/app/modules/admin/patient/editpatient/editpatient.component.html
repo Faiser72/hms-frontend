@@ -1,0 +1,505 @@
+<div class="container-fluid mt-3 p-0">
+    <div class="card shadow-lg">
+        <div class="card-title">
+            <h4 class="text-center main-bg pt-3 mt-1">- Edit Patient Details -</h4>
+        </div>
+        <mat-divider class="mx-5"></mat-divider>
+
+        <mat-horizontal-stepper #stepper class="pt-4">
+
+            <!------------------------------------------------------------------------------- DEMOGRAPHIC DETAILS FORM ------------------------------------------->
+
+
+            <mat-step [stepControl]="firstFormGroup" errorMessage="Name is required.">
+                <form action="" class="form-group customhover" [formGroup]="addpatientDetailsFormOne">
+                    <ng-template matStepLabel>Demographic details</ng-template>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <mat-form-field class="field-full-width">
+                                    <mat-label>Patient Name <sup class="text-danger">*</sup></mat-label>
+                                    <input matInput placeholder="Ex. Sudhakar" value="" formControlName="patientName" />
+                                </mat-form-field>
+                                <h6 style="color: red;" *ngIf="addpatientDetailsFormOne.get('patientName') && addpatientDetailsFormOne.get('patientName').touched && addpatientDetailsFormOne.get('patientName').invalid">
+                                    Please enter this field</h6>
+                            </div>
+                            <div class="col-md-4">
+                                <mat-form-field class="field-full-width">
+                                    <mat-label>Registration ID <sup class="text-danger">*</sup></mat-label>
+                                    <input matInput placeholder="Ex. ADB310221" value="" formControlName="registrationId" />
+                                </mat-form-field>
+                                <h6 style="color: red;" *ngIf="addpatientDetailsFormOne.get('registrationId') && addpatientDetailsFormOne.get('registrationId').touched && addpatientDetailsFormOne.get('registrationId').invalid">
+                                    Please enter this field</h6>
+                            </div>
+                            <div class="col-md-4">
+                                <mat-form-field class="field-full-width">
+                                    <mat-label>Date<sup class="text-danger">*</sup></mat-label>
+                                    <input matInput [matDatepicker]="picker" placeholder="Ex. 7/2/1995" value="" formControlName="date" />
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                </mat-form-field>
+                                <p style="color: red;" *ngIf="addpatientDetailsFormOne.get('date') && addpatientDetailsFormOne.get('date').touched && addpatientDetailsFormOne.get('date').invalid">
+                                    Please select date</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <mat-form-field class="field-full-width">
+                                    <mat-label>Date Of Birth <sup class="text-danger">*</sup></mat-label>
+                                    <input matInput [matDatepicker]="dob" placeholder="Ex. 7/2/1995" value="" formControlName="dob" />
+                                    <mat-datepicker-toggle matSuffix [for]="dob"></mat-datepicker-toggle>
+                                    <mat-datepicker #dob></mat-datepicker>
+                                </mat-form-field>
+                                <p style="color: red;" *ngIf="addpatientDetailsFormOne.get('dob') && addpatientDetailsFormOne.get('dob').touched && addpatientDetailsFormOne.get('dob').invalid">
+                                    Please select Date of birth</p>
+                            </div>
+                            <div class="col-md-4">
+                                <mat-form-field class="field-full-width">
+                                    <mat-label>Age<sup class="text-danger">*</sup></mat-label>
+                                    <input matInput placeholder="Ex. 18" value="" formControlName="age" />
+                                </mat-form-field>
+                                <h6 style="color: red;" *ngIf="addpatientDetailsFormOne.get('age') && addpatientDetailsFormOne.get('age').touched && addpatientDetailsFormOne.get('age').invalid">
+                                    Please enter this field</h6>
+                            </div>
+                            <div class="col-md-4">
+                                <mat-form-field class="field-full-width">
+                                    <mat-label>Gender <sup class="text-danger">*</sup></mat-label>
+                                    <mat-select formControlName="gender">
+                                        <mat-option *ngFor="let gen of gender" [value]="gen.value">
+                                            {{gen.viewValue}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <p style="color: red;" *ngIf="addpatientDetailsFormOne.get('gender') && addpatientDetailsFormOne.get('gender').touched && addpatientDetailsFormOne.get('gender').invalid">
+                                    Please enter this field</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <mat-form-field class="field-full-width">
+                                    <mat-label>Blood Group <sup class="text-danger">*</sup></mat-label>
+                                    <mat-select formControlName="bloodGroup">
+                                        <mat-option *ngFor="let blood of bloodGroup" [value]="blood.value">
+                                            {{blood.viewValue}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <p style="color: red;" *ngIf="addpatientDetailsFormOne.get('bloodGroup') && addpatientDetailsFormOne.get('bloodGroup').touched && addpatientDetailsFormOne.get('bloodGroup').invalid">
+                                    Please enter this field</p>
+                            </div>
+                            <div class="col-md-4">
+                                <mat-form-field class="field-full-width">
+                                    <mat-label>Marital Status<sup class="text-danger">*</sup></mat-label>
+                                    <mat-select formControlName="maritalStatus">
+                                        <mat-option *ngFor="let marital of maritalStatus" [value]="marital.value">
+                                            {{marital.viewValue}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <p style="color: red;" *ngIf="addpatientDetailsFormOne.get('maritalStatus') && addpatientDetailsFormOne.get('maritalStatus').touched && addpatientDetailsFormOne.get('maritalStatus').invalid">
+                                    Please enter this field</p>
+                            </div>
+                            <div class="col-md-4">
+                                <mat-form-field class="field-full-width">
+                                    <mat-label>Occupation<sup class="text-danger">*</sup></mat-label>
+                                    <input matInput placeholder="Ex. Teacher" value="" formControlName="occupation" />
+                                </mat-form-field>
+                                <h6 style="color: red;" *ngIf="addpatientDetailsFormOne.get('occupation') && addpatientDetailsFormOne.get('occupation').touched && addpatientDetailsFormOne.get('occupation').invalid">
+                                    Please enter this field</h6>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <mat-form-field class="field-full-width">
+                                    <mat-label>Nationality<sup class="text-danger">*</sup></mat-label>
+                                    <input matInput placeholder="Ex. Indian" value="" formControlName="nationality" />
+                                </mat-form-field>
+                                <h6 style="color: red;" *ngIf="addpatientDetailsFormOne.get('nationality') && addpatientDetailsFormOne.get('nationality').touched && addpatientDetailsFormOne.get('nationality').invalid">
+                                    Please enter this field</h6>
+                            </div>
+                            <div class="col-md-4">
+                                <mat-form-field class="field-full-width">
+                                    <mat-label>Patient Type<sup class="text-danger">*</sup></mat-label>
+                                    <mat-select formControlName="patientType">
+                                        <mat-option *ngFor="let type of patientType" [value]="type.value">
+                                            {{type.viewValue}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <p style="color: red;" *ngIf="addpatientDetailsFormOne.get('patientType') && addpatientDetailsFormOne.get('patientType').touched && addpatientDetailsFormOne.get('patientType').invalid">
+                                    Please enter this field</p>
+                            </div>
+                            <div class="col-md-4">
+                                <mat-form-field class="field-full-width">
+                                    <mat-label>Aadhar Number<sup class="text-danger">*</sup></mat-label>
+                                    <input matInput placeholder="Ex. 000000000000" value="" formControlName="aadharNumber" />
+                                </mat-form-field>
+                                <h6 style="color: red;" *ngIf="addpatientDetailsFormOne.get('aadharNumber') && addpatientDetailsFormOne.get('aadharNumber').touched && addpatientDetailsFormOne.get('aadharNumber').invalid">
+                                    Please enter this field</h6>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container pt-5">
+                        <div class="row justify-content-center">
+                            <div class="pr-5 mt-2">
+                                <label for="avatar">Profile Photo</label>
+                                <div class="text-left mt-2">
+                                    <img [src]="placeholder_path" alt="" width="150px" height="180px" class="p-1 uploadOne border profile-holder" (click)="photoUpload.click()" />
+                                    <input class="" type="file" name="photoUpload" accept="image/*" id="photoUpload" #photoUpload hidden formControlName="avatar" />
+                                    <div>
+                                        <!-- <span class="candidate-photo-name">&nbsp;{{ candidatePhotoName }}&nbsp;</span>
+                                        <span style="color: red;" *ngIf="photoMessage">{{
+                                          photoMessage
+                                        }}</span> -->
+                                    </div>
+                                    <br />
+                                </div>
+                                <p style="color: red;" *ngIf="addpatientDetailsFormOne.get('avatar') && addpatientDetailsFormOne.get('avatar').touched && addpatientDetailsFormOne.get('avatar').invalid">
+                                    Please enter this field</p>
+                            </div>
+                            <div class="pr-5 mt-2">
+                                <label for="avatar">Take Photo</label>
+                                <div class="text-left mt-2">
+                                    <img [src]="placeholder_path" alt="" width="150px" height="180px" class="p-1 uploadOne border profile-holder" (click)="photoUpload.click()" />
+                                    <input type="file" name="photoUpload" accept="image/*" id="photoUpload" #photoUpload hidden formControlName="avatar" />
+                                    <div>
+                                        <!-- <span class="candidate-photo-name">&nbsp;{{ candidatePhotoName }}&nbsp;</span>
+                                            <span style="color: red;" *ngIf="photoMessage">{{
+                                              photoMessage
+                                            }}</span> -->
+                                    </div>
+                                    <br />
+                                </div>
+                                <p style="color: red;" *ngIf="addpatientDetailsFormOne.get('avatar') && addpatientDetailsFormOne.get('avatar').touched && addpatientDetailsFormOne.get('avatar').invalid">
+                                    Please enter this field</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="row d-flex justify-content-center p-4">
+                            <div class="pr-5 mt-2">
+                                <button type="submit" matStepperNext mat-raised-button color="primary">
+                                    <mat-icon class="mr-2">save</mat-icon>Next
+                              </button>
+                            </div>
+                            <div class="pr-5 mt-2">
+                                <button type="reset" mat-raised-button color="accent">
+                                    <mat-icon class="mr-2">360</mat-icon>Reset
+                                  </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </mat-step>
+
+            <!------------------------------------------------------------------------------- CONTACT DETAILS FORM ------------------------------------------->
+
+            <mat-step [stepControl]="secondFormGroup" errorMessage="Address is required.">
+                <form action="" class="form-group customhover" [formGroup]="addpatientDetailsFormTwo">
+                    <ng-template matStepLabel>Contact details</ng-template>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <mat-form-field class="field-full-width">
+                                    <mat-label>Address 1<sup class="text-danger">*</sup></mat-label>
+                                    <input matInput placeholder="Ex. street,Door Number" value="" formControlName="addressOne" />
+                                </mat-form-field>
+                                <h6 style="color: red;" *ngIf="addpatientDetailsFormTwo.get('addressOne') && addpatientDetailsFormTwo.get('addressOne').touched && addpatientDetailsFormTwo.get('addressOne').invalid">
+                                    Please enter this field</h6>
+                            </div>
+                            <div class="col-md-6">
+                                <mat-form-field class="field-full-width">
+                                    <mat-label>Address 2<sup class="text-danger">*</sup></mat-label>
+                                    <input matInput placeholder="Ex. place" value="" formControlName="addressTwo" />
+                                </mat-form-field>
+                                <h6 style="color: red;" *ngIf="addpatientDetailsFormTwo.get('addressTwo') && addpatientDetailsFormTwo.get('addressTwo').touched && addpatientDetailsFormTwo.get('addressTwo').invalid">
+                                    Please enter this field</h6>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <mat-form-field class="field-full-width">
+                                    <mat-label>City / Town<sup class="text-danger">*</sup></mat-label>
+                                    <input matInput placeholder="Ex. street,Door Number" value="" formControlName="city" />
+                                </mat-form-field>
+                                <h6 style="color: red;" *ngIf="addpatientDetailsFormTwo.get('city') && addpatientDetailsFormTwo.get('city').touched && addpatientDetailsFormTwo.get('city').invalid">
+                                    Please enter this field</h6>
+                            </div>
+                            <div class="col-md-3">
+                                <mat-form-field class="field-full-width">
+                                    <mat-label>State<sup class="text-danger">*</sup></mat-label>
+                                    <input matInput placeholder="Ex. place" value="" formControlName="state" />
+                                </mat-form-field>
+                                <h6 style="color: red;" *ngIf="addpatientDetailsFormTwo.get('state') && addpatientDetailsFormTwo.get('state').touched && addpatientDetailsFormTwo.get('state').invalid">
+                                    Please enter this field</h6>
+                            </div>
+                            <div class="col-md-3">
+                                <mat-form-field class="field-full-width">
+                                    <mat-label>Country<sup class="text-danger">*</sup></mat-label>
+                                    <input matInput placeholder="Ex. place" value="" formControlName="country" />
+                                </mat-form-field>
+                                <h6 style="color: red;" *ngIf="addpatientDetailsFormTwo.get('country') && addpatientDetailsFormTwo.get('country').touched && addpatientDetailsFormTwo.get('country').invalid">
+                                    Please enter this field</h6>
+                            </div>
+                            <div class="col-md-3">
+                                <mat-form-field class="field-full-width">
+                                    <mat-label>pincode<sup class="text-danger">*</sup></mat-label>
+                                    <input matInput placeholder="Ex. place" value="" formControlName="pincode" />
+                                </mat-form-field>
+                                <h6 style="color: red;" *ngIf="addpatientDetailsFormTwo.get('pincode') && addpatientDetailsFormTwo.get('pincode').touched && addpatientDetailsFormTwo.get('pincode').invalid">
+                                    Please enter this field</h6>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <mat-form-field class="field-full-width">
+                                    <mat-label>Landmark<sup class="text-danger">*</sup></mat-label>
+                                    <input matInput placeholder="Ex. street,Door Number" value="" formControlName="landmark" />
+                                </mat-form-field>
+                                <h6 style="color: red;" *ngIf="addpatientDetailsFormTwo.get('landmark') && addpatientDetailsFormTwo.get('landmark').touched && addpatientDetailsFormTwo.get('landmark').invalid">
+                                    Please enter this field</h6>
+                            </div>
+                            <div class="col-md-3">
+                                <mat-form-field class="field-full-width">
+                                    <mat-label>Mobile Number<sup class="text-danger">*</sup></mat-label>
+                                    <input matInput placeholder="Ex. place" value="" formControlName="mobileNumber" />
+                                </mat-form-field>
+                                <h6 style="color: red;" *ngIf="addpatientDetailsFormTwo.get('mobileNumber') && addpatientDetailsFormTwo.get('mobileNumber').touched && addpatientDetailsFormTwo.get('mobileNumber').invalid">
+                                    Please enter this field</h6>
+                            </div>
+                            <div class="col-md-3">
+                                <mat-form-field class="field-full-width">
+                                    <mat-label>Phone Number<sup class="text-danger">*</sup></mat-label>
+                                    <input matInput placeholder="Ex. place" value="" formControlName="phoneNumber" />
+                                </mat-form-field>
+                                <h6 style="color: red;" *ngIf="addpatientDetailsFormTwo.get('phoneNumber') && addpatientDetailsFormTwo.get('phoneNumber').touched && addpatientDetailsFormTwo.get('phoneNumber').invalid">
+                                    Please enter this field</h6>
+                            </div>
+                            <div class="col-md-3">
+                                <mat-form-field class="field-full-width">
+                                    <mat-label>Email ID<sup class="text-danger">*</sup></mat-label>
+                                    <input matInput placeholder="Ex. place" value="" formControlName="emailId" />
+                                </mat-form-field>
+                                <h6 style="color: red;" *ngIf="addpatientDetailsFormTwo.get('emailId') && addpatientDetailsFormTwo.get('emailId').touched && addpatientDetailsFormTwo.get('emailId').invalid">
+                                    Please enter this field</h6>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-title mt-3">
+                        <h4 class="text-center main-bg pt-3 mt-1">- Emergency Contact Details -</h4>
+                    </div>
+
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <mat-form-field class="field-full-width">
+                                    <mat-label>Contact Number<sup class="text-danger">*</sup></mat-label>
+                                    <input matInput placeholder="Ex. street,Door Number" value="" formControlName="emeContactNumber" />
+                                </mat-form-field>
+                                <h6 style="color: red;" *ngIf="addpatientDetailsFormTwo.get('emeContactNumber') && addpatientDetailsFormTwo.get('emeContactNumber').touched && addpatientDetailsFormTwo.get('emeContactNumber').invalid">
+                                    Please enter this field</h6>
+                            </div>
+                            <div class="col-md-3">
+                                <mat-form-field class="field-full-width">
+                                    <mat-label>Email ID<sup class="text-danger">*</sup></mat-label>
+                                    <input matInput placeholder="Ex. place" value="" formControlName="emeEmailId" />
+                                </mat-form-field>
+                                <h6 style="color: red;" *ngIf="addpatientDetailsFormTwo.get('emeEmailId') && addpatientDetailsFormTwo.get('emeEmailId').touched && addpatientDetailsFormTwo.get('emeEmailId').invalid">
+                                    Please enter this field</h6>
+                            </div>
+                            <div class="col-md-3">
+                                <mat-form-field class="field-full-width">
+                                    <mat-label>Name<sup class="text-danger">*</sup></mat-label>
+                                    <input matInput placeholder="Ex. place" value="" formControlName="emeName" />
+                                </mat-form-field>
+                                <h6 style="color: red;" *ngIf="addpatientDetailsFormTwo.get('emeName') && addpatientDetailsFormTwo.get('emeName').touched && addpatientDetailsFormTwo.get('emeName').invalid">
+                                    Please enter this field</h6>
+                            </div>
+                            <div class="col-md-3">
+                                <mat-form-field class="field-full-width">
+                                    <mat-label>Relation<sup class="text-danger">*</sup></mat-label>
+                                    <input matInput placeholder="Ex. place" value="" formControlName="emeRelation" />
+                                </mat-form-field>
+                                <h6 style="color: red;" *ngIf="addpatientDetailsFormTwo.get('emeRelation') && addpatientDetailsFormTwo.get('emeRelation').touched && addpatientDetailsFormTwo.get('emeRelation').invalid">
+                                    Please enter this field</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="row d-flex justify-content-center p-4">
+                            <div class="pr-5 mt-2">
+                                <button type="submit" matStepperNext mat-raised-button color="primary">
+                                    <mat-icon class="mr-2">save</mat-icon>Next
+                              </button>
+                            </div>
+                            <div class="pr-5 mt-2">
+                                <button type="reset" mat-raised-button color="accent">
+                                    <mat-icon class="mr-2">360</mat-icon>Reset
+                                  </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </mat-step>
+
+            <!------------------------------------------------------------------------------- INSURANCE DETAILS FORM ------------------------------------------->
+
+
+            <mat-step [stepControl]="thirdFormGroup" errorMessage="Address is required.">
+                <form action="" class="form-group customhover" [formGroup]="addpatientDetailsFormThree">
+                    <ng-template matStepLabel>Contact details</ng-template>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <mat-form-field class="field-full-width">
+                                <mat-label>Patient is a insurance holder<sup class="text-danger">*</sup></mat-label>
+                                <mat-select formControlName="insuranceHolder" (selectionChange)='insuranceValue($event)'>
+                                    <mat-option *ngFor="let ins of insuranceHolder" [value]="ins.value">
+                                        {{ins.viewValue}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <p style="color: red;" *ngIf="addpatientDetailsFormOne.get('insuranceHolder') && addpatientDetailsFormOne.get('insuranceHolder').touched && addpatientDetailsFormOne.get('insuranceHolder').invalid">
+                                Please enter this field</p>
+                        </div>
+                    </div>
+
+                    <div *ngIf='insuranceSelecteddValue'>
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <mat-form-field class="field-full-width">
+                                        <mat-label>Insurance policy number<sup class="text-danger">*</sup></mat-label>
+                                        <input matInput placeholder="Ex. ABCD0001122" value="" formControlName="inspolicyNumber" />
+                                    </mat-form-field>
+                                    <h6 style="color: red;" *ngIf="addpatientDetailsFormThree.get('inspolicyNumber') && addpatientDetailsFormThree.get('inspolicyNumber').touched && addpatientDetailsFormThree.get('inspolicyNumber').invalid">
+                                        Please enter this field</h6>
+                                </div>
+                                <div class="col-md-3">
+                                    <mat-form-field class="field-full-width">
+                                        <mat-label>Insurance company name<sup class="text-danger">*</sup></mat-label>
+                                        <input matInput placeholder="Ex. Insurance name" value="" formControlName="insCompanyName" />
+                                    </mat-form-field>
+                                    <h6 style="color: red;" *ngIf="addpatientDetailsFormThree.get('insCompanyName') && addpatientDetailsFormThree.get('insCompanyName').touched && addpatientDetailsFormThree.get('insCompanyName').invalid">
+                                        Please enter this field</h6>
+                                </div>
+                                <div class="col-md-3">
+                                    <mat-form-field class="field-full-width">
+                                        <mat-label>Insurance holder name<sup class="text-danger">*</sup></mat-label>
+                                        <input matInput placeholder="Ex. Name" value="" formControlName="insHolderName" />
+                                    </mat-form-field>
+                                    <h6 style="color: red;" *ngIf="addpatientDetailsFormThree.get('insHolderName') && addpatientDetailsFormThree.get('insHolderName').touched && addpatientDetailsFormThree.get('insHolderName').invalid">
+                                        Please enter this field</h6>
+                                </div>
+                                <div class="col-md-3">
+                                    <mat-form-field class="field-full-width">
+                                        <mat-label>Relationship with patient<sup class="text-danger">*</sup></mat-label>
+                                        <input matInput placeholder="Ex. Relationship" value="" formControlName="insRelationship" />
+                                    </mat-form-field>
+                                    <h6 style="color: red;" *ngIf="addpatientDetailsFormThree.get('insRelationship') && addpatientDetailsFormThree.get('insRelationship').touched && addpatientDetailsFormThree.get('insRelationship').invalid">
+                                        Please enter this field</h6>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <mat-form-field class="field-full-width">
+                                        <mat-label>Mobile Number<sup class="text-danger">*</sup></mat-label>
+                                        <input matInput placeholder="Ex. ABCD0001122" value="" formControlName="insMobileNumber" />
+                                    </mat-form-field>
+                                    <h6 style="color: red;" *ngIf="addpatientDetailsFormThree.get('insMobileNumber') && addpatientDetailsFormThree.get('insMobileNumber').touched && addpatientDetailsFormThree.get('insMobileNumber').invalid">
+                                        Please enter this field</h6>
+                                </div>
+                                <div class="col-md-3">
+                                    <mat-form-field class="field-full-width">
+                                        <mat-label>Email ID<sup class="text-danger">*</sup></mat-label>
+                                        <input matInput placeholder="Ex. Insurance name" value="" formControlName="insEmailId" />
+                                    </mat-form-field>
+                                    <h6 style="color: red;" *ngIf="addpatientDetailsFormThree.get('insEmailId') && addpatientDetailsFormThree.get('insEmailId').touched && addpatientDetailsFormThree.get('insEmailId').invalid">
+                                        Please enter this field</h6>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-form-field class="field-full-width">
+                                        <mat-label>Address<sup class="text-danger">*</sup></mat-label>
+                                        <input matInput placeholder="Ex. Name" value="" formControlName="insAddress" />
+                                    </mat-form-field>
+                                    <h6 style="color: red;" *ngIf="addpatientDetailsFormThree.get('insAddress') && addpatientDetailsFormThree.get('insAddress').touched && addpatientDetailsFormThree.get('insAddress').invalid">
+                                        Please enter this field</h6>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="container">
+                        <div class="row d-flex justify-content-center p-4">
+                            <div class="pr-5 mt-2">
+                                <button type="submit" matStepperNext mat-raised-button color="primary">
+                                    <mat-icon class="mr-2">save</mat-icon>Submit
+                              </button>
+                            </div>
+                            <div class="pr-5 mt-2">
+                                <button type="reset" mat-raised-button color="accent">
+                                    <mat-icon class="mr-2">360</mat-icon>Reset
+                                  </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </mat-step>
+
+            <!------------------------------------------------------------------------------- PATIENT CARD PREVIEW ------------------------------------------->
+
+            <mat-step [stepControl]="thirdFormGroup" errorMessage="Address is required.">
+                <ng-template matStepLabel>Patient Card</ng-template>
+                <div class="container cardPatient">
+                    <h1>hii</h1>
+                </div>
+            </mat-step>
+
+
+            <mat-step>
+                <ng-template matStepLabel>Done</ng-template>
+                <!-- <p>You are now done.</p>
+                <div>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button (click)="stepper.reset()">Reset</button>
+                </div> -->
+
+                <div class="container">
+                    <div class="text-center pt-4">
+                        <h6>Patient is registered successfully</h6>
+                    </div>
+                    <div class="text-center">
+                        <img src="../../../../../assets/img/patient/14916-prueba-doctores-freepik.gif" class="img-fluid registerImage">
+                        <div class="mt-2">
+                            <button type="button" mat-raised-button color="accent" (click)="routeToPatientList()">
+                                <mat-icon class="mr-2">360</mat-icon>Done
+                              </button>
+                        </div>
+                    </div>
+                </div>
+            </mat-step>
+        </mat-horizontal-stepper>
+
+    </div>
+</div>

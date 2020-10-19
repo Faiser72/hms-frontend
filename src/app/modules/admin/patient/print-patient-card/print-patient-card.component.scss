@@ -1,0 +1,35 @@
+.mainCard {
+    padding-top: 20px;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.line {
+    border: 1px solid black !important;
+}
+
+.mat-form-field {
+    margin-top: 16px;
+}
+
+* {
+    border-radius: 0px;
+}
+
+.main-bg {
+    color: var(--main-font-4-color);
+}
+
+.main-bg-2 {
+    color: var(--main-font-3-color);
+}
+
+.card {
+    background: inherit;
+}
+
+.submit-btn {
+    outline: 0;
+    border-radius: 4px;
+    padding: 3px 30px 2px 26px;
+}

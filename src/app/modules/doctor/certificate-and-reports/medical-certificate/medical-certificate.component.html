@@ -1,0 +1,156 @@
+<div class="container-fluid mt-3 p-0">
+    <div class="card shadow">
+        <div class="card-title">
+            <h4 class="text-center main-bg pt-3 mt-1">- Medical Certificate -</h4>
+        </div>
+        <mat-divider class="mx-5"></mat-divider>
+        <div class="container pt-5">
+            <div class="row ">
+                <div class="col-md-4">
+                    <h6 class="main-bg-2">Patient Name: Xyz</h6>
+                </div>
+                <div class="col-md-4">
+                    <h6 class="main-bg-2">Patient/Reg ID: ABCD12345</h6>
+                </div>
+                <div class="col-md-4">
+                    <h6 class="main-bg-2">Date: 21/05/2020</h6>
+                </div>
+            </div>
+        </div>
+
+        <div class="container pt-3">
+            <div class="row ">
+                <div class="col-md-4">
+                    <h6 class="main-bg-2">Age: 24</h6>
+                </div>
+                <div class="col-md-4">
+                    <h6 class="main-bg-2">OP Number: ABCD12345</h6>
+                </div>
+                <div class="col-md-4">
+                    <h6 class="main-bg-2">Sex: Male</h6>
+                </div>
+            </div>
+        </div>
+
+        <div class="container pt-3 pb-5">
+            <div class="row ">
+                <div class="col-md-4">
+                    <h6 class="main-bg-2">OP Department: ENT</h6>
+                </div>
+                <div class="col-md-4">
+                    <h6 class="main-bg-2">Blood Group: O+</h6>
+                </div>
+                <div class="col-md-4">
+                    <h6 class="main-bg-2">Doctor Name: Dr Sudhakar</h6>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <form action="" class="form-group customhover" [formGroup]="addAppointmentForm">
+                <mat-form-field class="field-full-width">
+                    <mat-label>Medical Certicate For <sup class="text-danger">*</sup></mat-label>
+                    <mat-select formControlName="refTo" (selectionChange)="selectedValue($event)">
+                        <mat-option *ngFor="let gen of gender" [value]="gen.value">
+                            {{gen.viewValue}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <p style="color: red;" *ngIf="addAppointmentForm.get('refTo') && addAppointmentForm.get('refTo').touched && addAppointmentForm.get('refTo').invalid">
+                    Please enter this field</p>
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+</div>
+
+<div class="container card shadow mt-3 p-0" *ngIf='refValue=="fitness"'>
+    <div class="card-title">
+        <h4 class="text-center main-bg pt-3 mt-1">- Medical Certificate For Fitness -</h4>
+    </div>
+    <mat-divider class="mx-5"></mat-divider>
+
+    <div class="container">
+        <div class="pt-4">
+            <h6 class="main-bg-2" style="font-size: 30px;">
+                HMS World Hospital
+            </h6>
+            <h6 class="main-bg-2">
+                HMS world hospital is located at SY No. 52/2 & 52/3, Devarabeesanahalli, Varthur Hobli, Bangalore- 560 103
+            </h6>
+            <h6 class="main-bg-2">
+                +91 80 4969 4969
+            </h6>
+        </div>
+    </div>
+
+    <div class="container pt-5">
+        <h6> I hereby certify that the patient by name XYZ has been examined and in my opinion he/she is fit enough to participate in any of the events or programm </h6>
+        <div style="float: right;">
+            <div class="container pt-5">
+                <div class="row">
+                    <h6>Doctor Name: XYZ</h6>
+                </div>
+                <div class="row pt-5">
+                    <h6>Doctor Signature</h6>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="text-center pb-4">
+        <button type="submit" mat-raised-button color="primary">
+            <mat-icon class="mr-2">save</mat-icon>Print
+        </button>
+    </div>
+
+</div>
+
+
+<div class="container card shadow mt-3 p-0" *ngIf='refValue=="illness"'>
+    <div class="card-title">
+        <h4 class="text-center main-bg pt-3 mt-1">- Medical Certificate For Illness -</h4>
+    </div>
+    <mat-divider class="mx-5"></mat-divider>
+
+    <div class="container">
+        <div class="pt-4">
+            <h6 class="main-bg-2" style="font-size: 30px;">
+                HMS World Hospital
+            </h6>
+            <h6 class="main-bg-2">
+                HMS world hospital is located at SY No. 52/2 & 52/3, Devarabeesanahalli, Varthur Hobli, Bangalore- 560 103
+            </h6>
+            <h6 class="main-bg-2">
+                +91 80 4969 4969
+            </h6>
+        </div>
+    </div>
+
+    <div class="container pt-5">
+        <h6> I hereby certify that the patient by name XYZ has been examined and in my opinion he/she is unfit enough to participate in any of the events or programm </h6>
+        <h6 class="pt-4">He/She Should be under medication strictly from 23/05/2020 t0 29/05/2020</h6>
+        <div style="float: right;">
+            <div class="container pt-5">
+                <div class="row">
+                    <h6>Doctor Name: XYZ</h6>
+                </div>
+                <div class="row pt-5">
+                    <h6>Doctor Signature</h6>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="text-center pb-4">
+        <button type="submit" mat-raised-button color="primary">
+            <mat-icon class="mr-2">save</mat-icon>Print
+        </button>
+    </div>
+
+</div>

@@ -1,0 +1,104 @@
+.das-content{
+    height: 100%;
+    padding: 10px, 10px, 10px, 10px;
+    margin: 0px;
+    margin-top: 25px;
+}
+
+.main-bg {
+    color: var(--main-font-4-color);
+  }
+
+.custom-col{
+    margin: 3px;
+    min-width: 200px;
+}
+
+.tiles {
+    min-width: 200px;
+    /* min-height: 235px; */
+    box-sizing: border-box;
+    border: 1px solid white;
+    border-radius: 6px;
+    -webkit-box-shadow: 2px 7px 19px -6px rgba(0, 0, 0, 0.24);
+    -moz-box-shadow: 2px 7px 19px -6px rgba(0, 0, 0, 0.24);
+    box-shadow: 2px 7px 19px -6px rgba(0, 0, 0, 0.24);
+    cursor: pointer;
+  }
+
+  .c-shadow{
+    -webkit-box-shadow: 2px 7px 19px -6px rgba(0, 0, 0, 0.24);
+    -moz-box-shadow: 2px 7px 19px -6px rgba(0, 0, 0, 0.24);
+    box-shadow: 2px 7px 19px -6px rgba(0, 0, 0, 0.24);
+    cursor: pointer;
+  }
+
+  .title-header {
+    text-align: center;
+    color: var(--main-font-2-color);
+}
+  .header{
+      height: 3rem;
+  }
+
+  .cardWithRouting{
+      height: 6rem;
+      border-radius: 30px;
+  }
+
+  #c-surgery{
+    background-image: linear-gradient(to bottom right,#d8dbd8, #9fbb9f);
+    color: lightgoldenrodyellow;
+  }
+
+  #c-presurgery{
+    background-image: linear-gradient(to bottom right,#d8dbd8, #9fbb9f);
+    color: lightgoldenrodyellow;
+  }
+
+  #c-postsurgery{
+    background-image: linear-gradient(to bottom right,#d8dbd8, #9fbb9f);
+    color: lightgoldenrodyellow;
+  }
+
+  #c-discharge{
+    background-image: linear-gradient(to bottom right,#d8dbd8, #9fbb9f);
+    color: lightgoldenrodyellow;
+  }
+
+  #c-consumables{
+    background-image: linear-gradient(to bottom right,#d8dbd8, #9fbb9f);
+    color: lightgoldenrodyellow;
+  }
+
+  .icon-display {
+    width: 25px;
+    height: 20px;
+    margin-top: 15px;
+    transform: scale(2);
+    transition: width 1s;
+    align-content: center;
+    color: black;
+ }
+
+
+ /* .icon-display {
+    padding: 10px;
+    transform: scale(2);
+    transition: width 1s;
+ } */
+
+ .cardWithRouting-text{
+     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+     font-size: medium;
+     font-weight: bold;
+     margin-top: 10px;
+ }
+img{
+    width: 25px;
+    height: 20px;
+    margin-top: 15px;
+    transform: scale(2);
+    transition: width 1s;
+    align-content: center;
+}
