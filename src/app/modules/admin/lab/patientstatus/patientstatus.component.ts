@@ -11,6 +11,7 @@ export class PatientstatusComponent implements OnInit {
 
   patientStatusForm: FormGroup;
   today: any;
+  doctorDetailsList:any;
 
   constructor(private fb: FormBuilder,
     private router: Router,

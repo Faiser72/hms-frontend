@@ -18,6 +18,7 @@ export class GeneratelabreportComponent implements OnInit {
   doctorName: any;
   sex: any;
   date: any;
+  doctorDetailsList:any
 
   constructor(private fb: FormBuilder,
     private router: Router,
