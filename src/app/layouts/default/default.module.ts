@@ -41,6 +41,7 @@ import { PrescriptionhomeComponent } from 'src/app/modules/doctor/prescription/p
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ListpatienthistoryComponent } from 'src/app/modules/doctor/patienthistory/listpatienthistory/listpatienthistory.component';
 import { ReferalnoteModule } from 'src/app/modules/doctor/referalnote/referalnote.module';
+import { Ng2OdometerModule } from "ng2-odometer";
 @NgModule({
   declarations: [
     DefaultComponent,
@@ -64,6 +65,7 @@ import { ReferalnoteModule } from 'src/app/modules/doctor/referalnote/referalnot
     CommonModule,
     RouterModule,
     SharedModule,
+    Ng2OdometerModule,
     AdminModule,
     DoctorModule,
     SurgeryModule,
