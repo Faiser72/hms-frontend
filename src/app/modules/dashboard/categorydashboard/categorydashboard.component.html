@@ -1,0 +1,90 @@
+<div class="container-fluid">
+    <div class="container mt-5 mb-5">
+        <h1 class=" text-center txt onLoad-text">Welcome To HMS</h1>
+    </div>
+
+    <div class="dashboard">
+
+        <!-- Counts Tiles Starts -->
+        <div class="row d-flex justify-content-around">
+            <div class="col-lg-2 col-md-4 col-sm-5 col-xs-4 mb-3 mr-2" *ngIf="isAdminRole()">
+                <div class="card tiles" (click)='routeToDoctors()'>
+                    <div class="card-body">
+                        <h6 class="card-title title">OPD</h6>
+                        <p class="count " id="value">
+                            <img src="../../../../assets/img/opds.png" alt="" style="max-width: 5rem;">                   
+                             </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-5 col-xs-4 mb-3 mr-2" *ngIf="isAdminRole()">
+                <div class="card tiles" (click)='routeToPatients()'>
+                    <div class="card-body">
+                        <h6 class="card-title title">IPD</h6>
+                        <p class="count " id="value">
+                            <img src="../../../../assets/img/ipd1.png" alt="" style="max-width: 5rem;">                   
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-5 mb-3 mr-2" *ngIf="isAdminRole()">
+                <div class="card tiles" (click)='routeToAppointment()'>
+                    <div class="card-body">
+                        <h6 class="card-title title">Casuality</h6>
+                        <p class="count " id="value">
+                            <img src="../../../../assets/img/casualty.png" alt="" style="max-width: 5rem;">                   
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-5 mb-3 mr-2" *ngIf="isAdminRole()">
+                <div class="card tiles" (click)='routeToFrontDesk()'>
+                    <div class="card-body">
+                        <h6 class="card-title title">Emergency</h6>
+                        <p class="count " id="value">
+                            <img src="../../../../assets/img/emergency.png" alt="" style="max-width: 5rem;">
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="row d-flex justify-content-around">
+            <div class="col-lg-2 col-md-4 col-sm-5 col-xs-4 mb-3 mr-2">
+                <div class=" ">
+                    <div class="card-body">
+                        <img src="assets/img/doctor/docs.gif" width="192" height="170" />
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-5 col-xs-4 mb-3 mr-2" *ngIf="isUserRole()">
+                <div class="card tiles" (click)="routeToMyPatients()">
+                    <div class="card-body">
+                        <h6 class="card-title title">My Patients</h6>
+                        <p class="count " id="value">
+                            <ng2-odometer [number]="myPatientsCount" [config]="{ }"></ng2-odometer>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-5 mb-3 mr-2" *ngIf="isUserRole()">
+                <div class="card tiles" (click)="routeToMyAppointment()">
+                    <div class="card-body">
+                        <h6 class="card-title title"> My Appointments</h6>
+                        <p class="count " id="value">
+                            <ng2-odometer [number]="myAppointmentsCount" [config]="{ }"></ng2-odometer>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-5 mb-3 mr-2">
+                <div class=" ">
+                    <div class="card-body">
+                        <img src="assets/img/doctor/docs1.gif" width="192" height="170" />
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+        <router-outlet></router-outlet>

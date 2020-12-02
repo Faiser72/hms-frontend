@@ -5,6 +5,7 @@ import { LabreportsComponent } from './labreports/labreports.component';
 import { PatientstatusComponent } from './patientstatus/patientstatus.component';
 import { LabtestlistComponent } from './labtestlist/labtestlist.component';
 import { GeneratelabreportComponent } from './generatelabreport/generatelabreport.component';
+import { PrintreportComponent } from './printreport/printreport.component';
 
 
 

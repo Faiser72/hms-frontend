@@ -22,6 +22,7 @@ export class LabtestmasterComponent implements OnInit {
   displayedColumns: string[] = [
     "slNo",
     "labtestName",
+    "range",
     "action"
   ];
   doctorRoleDetailsList: any;
@@ -61,11 +62,16 @@ export class LabtestmasterComponent implements OnInit {
       doctorRoleId: [0],
       labtestName: [null, [Validators.required, disablePrefixSpace]],
       description: [null, [Validators.required, disablePrefixSpace]],
+      minValue: [null, [Validators.required, disablePrefixSpace]],
+      maxValue:[null, [Validators.required, disablePrefixSpace]],
     });
     this.addLabTestMasterForm.setValidators(this.customValidation());
   }
 
-  labtestNameInputMsg: string; labtestName: string;
+  labtestNameInputMsg: string; 
+  minValueInputMsg: string = "Please enter this field."
+  maxValueInputMsg: string = "Please enter this field."
+  labtestName: string;
   customValidation(): ValidatorFn {
     return (formGroup: FormGroup): ValidationErrors => {
       const labtestNameFormGroup = formGroup.controls['labtestName'];

@@ -41,14 +41,18 @@ export class GeneratelabreportComponent implements OnInit {
     this.generateLabReportForm = this.fb.group({
       labTechnicianName: [null, [Validators.required]],
       registerId: [null, [Validators.required]],
-      testType: [null, [Validators.required]],
-      testSubType: [null, [Validators.required]],
-      template: [null, [Validators.required]]
+      testName: [null, [Validators.required]],
+      value: [null, [Validators.required]],
+      range: [null, [Validators.required]]
       // phoneNumber: [
       //   null,
       //   [Validators.required, Validators.pattern(this.phonePattern)],
       // ],
     });
+  }
+
+  routeToPrint(){
+    this.router.navigate(['printlabreport'])
   }
 
   back() {

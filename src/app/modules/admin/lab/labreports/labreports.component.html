@@ -13,11 +13,11 @@ Description :- this module is used for lab reports(onHold),
 <div class="container-fluid mt-3 p-0">
     <div class="card shadow">
         <div class="card-title">
-            <h4 class="text-center main-bg pt-3 mt-1">- Lab Reports -</h4>
+            <h4 class="text-center main-bg pt-3 mt-1">- View Lab Reports -</h4>
         </div>
         <!-- <mat-divider class="mx-5"></mat-divider> -->
 
-        <div class="mt-3">
+        <!-- <div class="mt-3">
             <div class="row d-flex justify-content-center mt-4 ml-5 mr-5 w-100 mx-auto">
                 <div class="col-lg-4 col-sm-12 col-md-6 text-center header-text">
                     <div class="row">
@@ -55,10 +55,10 @@ Description :- this module is used for lab reports(onHold),
                     </div>
                 </div>
             </div>
-        </div>
-        <mat-divider class="mx-5"></mat-divider>
+        </div> -->
+        <!-- <mat-divider class="mx-5"></mat-divider> -->
 
-        <form action="" class="form-group customhover">
+        <form action="" class="form-group customhover" [formGroup]="viewLabReportForm">
             <div class="row d-flex justify-content-around mt-4 ml-5 mr-5 w-50 mx-auto">
                 <!-- <div class="col-lg-4 col-sm-12 col-md-6">
                     <mat-form-field class="field-full-width">
@@ -68,22 +68,57 @@ Description :- this module is used for lab reports(onHold),
                 </div> -->
                 <div class="col-lg-12 col-sm-12 col-md-6">
                     <mat-form-field class="field-full-width">
-                        <mat-label>Test Name</mat-label>
-                        <input matInput placeholder="Ex. XYZ" value="" />
+                        <mat-label>Register Id <sup class="text-danger">*</sup></mat-label>
+                        <mat-select formControlName="registerId">
+                            <mat-option *ngFor="let patient of patientDetailsList" [value]="patient">
+                                {{patient.patientNumber}}
+                            </mat-option>
+                        </mat-select>
                     </mat-form-field>
+                    <p style="color: red;"
+                        *ngIf="viewLabReportForm.get('registerId') && viewLabReportForm.get('registerId').touched && viewLabReportForm.get('registerId').invalid">
+                        Please enter this field</p>
 
                 </div>
 
             </div>
 
-
+            <div class="row d-flex justify-content-around  ml-5 mr-5 w-50 mx-auto">
+                <div class="col-lg-12 col-sm-12 col-md-6">
+                    <mat-form-field class="field-full-width">
+                        <mat-label>Patient Name <sup class="text-danger">*</sup></mat-label>
+                        <input matInput placeholder="Ex. xyz" value="" formControlName="patientName" />
+                    </mat-form-field>
+                    <p style="color: red;"
+                        *ngIf="viewLabReportForm.get('patientName') && viewLabReportForm.get('patientName').touched && viewLabReportForm.get('patientName').invalid">
+                        Please enter this field</p>
+                </div>
+            </div>
 
             <div class="row d-flex justify-content-around  ml-5 mr-5 w-50 mx-auto">
                 <div class="col-lg-12 col-sm-12 col-md-6">
                     <mat-form-field class="field-full-width">
-                        <mat-label>Reports by Lab</mat-label>
-                        <input matInput placeholder="Ex. XYZ" value="" />
+                        <mat-label>Mobile Number <sup class="text-danger">*</sup></mat-label>
+                        <span matPrefix>+91 &nbsp;</span>
+                        <input type="tel" matInput placeholder="555-555-1234" formControlName="mobileNumber">
+                        <mat-icon matSuffix color="primary">phone</mat-icon>
                     </mat-form-field>
+                    <p style="color: red;"
+                        *ngIf="viewLabReportForm.get('mobileNumber') && viewLabReportForm.get('mobileNumber').touched && viewLabReportForm.get('mobileNumber').invalid">
+                        Please enter this field</p>
+                </div>
+            </div>
+
+            <div class="row d-flex justify-content-around  ml-5 mr-5 w-50 mx-auto">
+                <div class="col-lg-12 col-sm-12 col-md-6">
+                    <mat-form-field class="field-full-width">
+                        <mat-label>Date</mat-label>
+                        <input matInput type="date" placeholder="Ex. 7/2/2020" value="" color="primary"
+                            formControlName="date" id='from' min="{{today}}" />
+                    </mat-form-field>
+                    <p style="color: red;"
+                        *ngIf="viewLabReportForm.get('date') && viewLabReportForm.get('date').touched && viewLabReportForm.get('date').invalid">
+                        Please enter this field</p>
                 </div>
             </div>
 

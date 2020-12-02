@@ -42,6 +42,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ListpatienthistoryComponent } from 'src/app/modules/doctor/patienthistory/listpatienthistory/listpatienthistory.component';
 import { ReferalnoteModule } from 'src/app/modules/doctor/referalnote/referalnote.module';
 import { Ng2OdometerModule } from "ng2-odometer";
+import { CategorydashboardComponent } from 'src/app/modules/dashboard/categorydashboard/categorydashboard.component';
+import { PrintreportComponent } from 'src/app/modules/admin/lab/printreport/printreport.component';
 @NgModule({
   declarations: [
     DefaultComponent,
@@ -58,7 +60,8 @@ import { Ng2OdometerModule } from "ng2-odometer";
     SurgeryhomeComponent,
     AddprescriptionComponent,
     PrescriptionhomeComponent,
-    ListpatienthistoryComponent
+    ListpatienthistoryComponent,
+    CategorydashboardComponent,
 
   ],
   imports: [

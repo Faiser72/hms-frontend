@@ -70,6 +70,8 @@ import { ReferalnoteComponent } from './modules/doctor/referalnote/referalnote/r
 import { PatientstatusComponent } from './modules/admin/lab/patientstatus/patientstatus.component';
 import { LabtestlistComponent } from './modules/admin/lab/labtestlist/labtestlist.component';
 import { GeneratelabreportComponent } from './modules/admin/lab/generatelabreport/generatelabreport.component';
+import { CategorydashboardComponent } from './modules/dashboard/categorydashboard/categorydashboard.component';
+import { PrintreportComponent } from './modules/admin/lab/printreport/printreport.component';
 
 const routes: Routes = [
   {
@@ -77,6 +79,7 @@ const routes: Routes = [
     component: DefaultComponent,
     children: [
       { path: "", component: DashboardComponent },
+      { path: "categorydashboard", component: CategorydashboardComponent },
       {
         path: "doctorshome",
         component: DoctorshomeComponent,
@@ -203,6 +206,8 @@ const routes: Routes = [
       { path: "listpatienthistory", component: ListpatienthistoryComponent },
 
       { path: "referalnote", component: ReferalnoteComponent },
+
+      { path: "printlabreport", component: PrintreportComponent },
 
       // manjunath routing ends here
 

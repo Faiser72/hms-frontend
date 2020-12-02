@@ -24,6 +24,7 @@ import { LabtestComponent } from './lab/labtest/labtest.component';
 import { PatientstatusComponent } from './lab/patientstatus/patientstatus.component';
 import { LabtestlistComponent } from './lab/labtestlist/labtestlist.component';
 import { GeneratelabreportComponent } from './lab/generatelabreport/generatelabreport.component';
+import { PrintreportComponent } from './lab/printreport/printreport.component';
 
 @NgModule({
   declarations: [AdddoctorsComponent,
@@ -43,7 +44,8 @@ import { GeneratelabreportComponent } from './lab/generatelabreport/generatelabr
     LabreportsComponent,
     PatientstatusComponent,
     LabtestlistComponent,
-    GeneratelabreportComponent
+    GeneratelabreportComponent,
+    PrintreportComponent
   ],
   imports: [
     CommonModule,

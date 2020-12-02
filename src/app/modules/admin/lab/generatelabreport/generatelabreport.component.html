@@ -90,11 +90,15 @@ Description :- this component is used to shgow the list of lab tests,
                 </div>
                 <div class="col-lg-6 col-sm-12 col-md-6">
                     <mat-form-field class="field-full-width">
-                        <mat-label>Test Type <sup class="text-danger">*</sup></mat-label>
-                        <input matInput placeholder="Ex. xyz" value="" formControlName="testType" />
+                        <mat-label>Test Name <sup class="text-danger">*</sup></mat-label>
+                        <mat-select formControlName="testName">
+                            <mat-option *ngFor="let doctor of doctorDetailsList" [value]="doctor">
+                                {{doctor.doctorName}}
+                            </mat-option>
+                        </mat-select>
                     </mat-form-field>
                     <p style="color: red;"
-                        *ngIf="generateLabReportForm.get('testType') && generateLabReportForm.get('testType').touched && generateLabReportForm.get('testType').invalid">
+                        *ngIf="generateLabReportForm.get('testName') && generateLabReportForm.get('testName').touched && generateLabReportForm.get('testName').invalid">
                         Please enter this field</p>
                 </div>
             </div>
@@ -103,24 +107,20 @@ Description :- this component is used to shgow the list of lab tests,
 
                 <div class="col-lg-6 col-md-12 col-sm-12 mx-auto">
                     <mat-form-field class="field-full-width">
-                        <mat-label>Test Sub Type <sup class="text-danger">*</sup></mat-label>
-                        <input matInput placeholder="Ex. xyz" value="" formControlName="testSubType" />
+                        <mat-label>Value<sup class="text-danger">*</sup></mat-label>
+                        <input matInput placeholder="Ex. xyz" value="" formControlName="value" />
                     </mat-form-field>
                     <p style="color: red;"
-                        *ngIf="generateLabReportForm.get('testSubType') && generateLabReportForm.get('testSubType').touched && generateLabReportForm.get('testSubType').invalid">
+                        *ngIf="generateLabReportForm.get('value') && generateLabReportForm.get('value').touched && generateLabReportForm.get('value').invalid">
                         Please enter this field</p>
                 </div>
                 <div class="col-lg-6 col-md-12 col-sm-12 mx-auto">
                     <mat-form-field class="field-full-width">
-                        <mat-label>Template <sup class="text-danger">*</sup></mat-label>
-                        <mat-select formControlName="template">
-                            <mat-option *ngFor="let doctor of doctorDetailsList" [value]="doctor">
-                                {{doctor.doctorName}}
-                            </mat-option>
-                        </mat-select>
+                        <mat-label>Range <sup class="text-danger">*</sup></mat-label>
+                        <input matInput placeholder="Ex. xyz" value="" formControlName="range" />
                     </mat-form-field>
                     <p style="color: red;"
-                        *ngIf="generateLabReportForm.get('template') && generateLabReportForm.get('template').touched && generateLabReportForm.get('template').invalid">
+                        *ngIf="generateLabReportForm.get('range') && generateLabReportForm.get('range').touched && generateLabReportForm.get('range').invalid">
                         Please enter this field</p>
                 </div>
 
@@ -131,7 +131,7 @@ Description :- this component is used to shgow the list of lab tests,
 
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-around">
-                    <button type="submit" mat-raised-button color="primary">
+                    <button type="submit" mat-raised-button color="primary" (click)='routeToPrint()'>
                         <mat-icon class="mr-2">save</mat-icon>Generate Report
                     </button>
                     <button type="button" mat-raised-button color="accent" (click)='back()'>

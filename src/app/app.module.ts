@@ -18,6 +18,7 @@ import { DefaultModule } from "./layouts/default/default.module";
 import { RouterModule } from "@angular/router";
 import { DashboardComponent } from "./modules/dashboard/dashboard.component";
 import { PatientListComponent } from './modules/doctor/patient-list/patient-list.component';
+import { CategorydashboardComponent } from './modules/dashboard/categorydashboard/categorydashboard.component';
 
 @NgModule({
   declarations: [AppComponent],
