@@ -125,6 +125,22 @@ Description :- this is the side bar component, this component is used to add oth
         <mat-icon>meeting_room</mat-icon>Appointment
     </a>
 
+    <!-- ipd starts here -->
+
+    <span>
+        <mat-list-item (click)="showIpdSubmenu = !showIpdSubmenu" class="parent mb-1"
+            (click)="toggleIpdSubmenu('ipd_submenu')">
+            <mat-icon>local_hospital</mat-icon>
+            <span class="full-width">Ipd</span>
+            <mat-icon class="menu-button" [ngClass]="{'rotated' : showIpdSubmenu}">expand_more</mat-icon>
+        </mat-list-item>
+        <div class="submenu" [ngClass]="{'expanded' : showIpdSubmenu}" id="ipd_submenu">
+            <a mat-list-item routerLinkActive="list-item-active" routerLink="/bedallotment">
+                <mat-icon> <i class="fa fa-bed" aria-hidden="true"></i></mat-icon>Bed Allotment
+            </a>
+        </div>
+    </span>
+
     <!-- Faiser side bar ends here -->
 
 

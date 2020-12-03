@@ -44,6 +44,7 @@ import { ReferalnoteModule } from 'src/app/modules/doctor/referalnote/referalnot
 import { Ng2OdometerModule } from "ng2-odometer";
 import { CategorydashboardComponent } from 'src/app/modules/dashboard/categorydashboard/categorydashboard.component';
 import { PrintreportComponent } from 'src/app/modules/admin/lab/printreport/printreport.component';
+import { BedModule } from 'src/app/modules/ipd/bed/bed.module';
 @NgModule({
   declarations: [
     DefaultComponent,
@@ -97,7 +98,8 @@ import { PrintreportComponent } from 'src/app/modules/admin/lab/printreport/prin
     FormsModule,
     MatBadgeModule,
     MatAutocompleteModule,
-    ReferalnoteModule
+    ReferalnoteModule,
+    BedModule
 
   ],
 })

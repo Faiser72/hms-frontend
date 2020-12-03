@@ -13,6 +13,7 @@ export class SidebarComponent implements OnInit {
   showInternalReference: boolean = false;
   showBirthReport: boolean = false;
   showLaboratorySubmenu: boolean = false;
+  showIpdSubmenu: boolean = false;
 
 
   togglePatientSubmenu(submenu: string) {
@@ -65,6 +66,16 @@ export class SidebarComponent implements OnInit {
   }
 
   toggleLaboratorySubmenu(submenu: string) {
+    let element = document.getElementById(submenu);
+    if (element.style.display == '' || element.style.display == 'none') {
+      element.style.display = 'block';
+    }
+    else {
+      element.style.display = 'none';
+    }
+  }
+
+  toggleIpdSubmenu(submenu: string) {
     let element = document.getElementById(submenu);
     if (element.style.display == '' || element.style.display == 'none') {
       element.style.display = 'block';

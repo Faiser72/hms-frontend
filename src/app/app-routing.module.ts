@@ -72,6 +72,7 @@ import { LabtestlistComponent } from './modules/admin/lab/labtestlist/labtestlis
 import { GeneratelabreportComponent } from './modules/admin/lab/generatelabreport/generatelabreport.component';
 import { CategorydashboardComponent } from './modules/dashboard/categorydashboard/categorydashboard.component';
 import { PrintreportComponent } from './modules/admin/lab/printreport/printreport.component';
+import { BedallotmentComponent } from './modules/ipd/bed/bedallotment/bedallotment.component';
 
 const routes: Routes = [
   {
@@ -236,6 +237,9 @@ const routes: Routes = [
         ]
       },
       // Vikash Kumar routing ends here
+
+      // IPD Starts Here
+      { path: "bedallotment", component: BedallotmentComponent }
     ],
   },
 ];
