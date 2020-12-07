@@ -1,1 +1,196 @@
-<p>bedallotment works!</p>
+<div class="container-fluid mt-3 p-0">
+    <div class="card shadow">
+        <div class="card-title">
+            <h4 class="text-center main-bg pt-3 mt-1">- Bed Allotment -</h4>
+        </div>
+        <mat-divider class="mx-5"></mat-divider>
+        <form action="" class="form-group customhover" [formGroup]="bedAllotmentForm"
+            (ngSubmit)="bedAllotmentFormSubmit()">
+            <div class="row d-flex justify-content-around mt-4 ml-5 mr-5">
+                <div class="col-lg-4 col-sm-12 col-md-6">
+                    <mat-form-field class="field-full-width">
+                        <mat-label>Ipd Number <sup class="text-danger">*</sup></mat-label>
+                        <input matInput placeholder="Ex. xyz" value="" formControlName="ipdNumber" />
+                    </mat-form-field>
+                    <p style="color: red;"
+                        *ngIf="bedAllotmentForm.get('ipdNumber') && bedAllotmentForm.get('ipdNumber').touched && bedAllotmentForm.get('ipdNumber').invalid">
+                        Please enter this field</p>
+                </div>
+                <div class="col-lg-4 col-sm-12 col-md-6">
+                    <mat-form-field class="field-full-width">
+                        <mat-label>Telephone <sup class="text-danger">*</sup></mat-label>
+                        <span matPrefix>+91 &nbsp;</span>
+                        <input type="tel" matInput placeholder="555-555-1234" formControlName="phoneNumber">
+                        <mat-icon matSuffix color="primary">phone</mat-icon>
+                    </mat-form-field>
+                    <p style="color: red;"
+                        *ngIf="bedAllotmentForm.get('phoneNumber') && bedAllotmentForm.get('phoneNumber').touched && bedAllotmentForm.get('phoneNumber').invalid">
+                        {{phoneNumberInputMsg}}</p>
+                </div>
+                <div class="col-lg-4 col-sm-12 col-md-6">
+                    <mat-form-field class="field-full-width">
+                        <mat-label>Patient Name <sup class="text-danger">*</sup></mat-label>
+                        <input matInput placeholder="Ex. xyz" value="" formControlName="patientName" />
+                    </mat-form-field>
+                    <p style="color: red;"
+                        *ngIf="bedAllotmentForm.get('patientName') && bedAllotmentForm.get('patientName').touched && bedAllotmentForm.get('patientName').invalid">
+                        Please enter this field</p>
+                </div>
+            </div>
+
+            <div class="row d-flex justify-content-around ml-5 mr-5">
+                <div class="col-lg-4 col-sm-12 col-md-6 mt-4 text-center">
+                    <mat-label>Sex : <sup class="text-danger">*</sup></mat-label>
+                    <mat-radio-group aria-label="Select Your Gender" color="primary" formControlName="sex">
+                        <mat-radio-button value="male">Male</mat-radio-button>
+                        <mat-radio-button value="female">Female</mat-radio-button>
+                    </mat-radio-group>
+                    <p style="color: red;"
+                        *ngIf="bedAllotmentForm.get('sex') && bedAllotmentForm.get('sex').touched && bedAllotmentForm.get('sex').invalid">
+                        Please enter this field</p>
+                </div>
+                <div class="col-lg-4 col-sm-12 col-md-6 mt-4 text-center">
+                    <mat-label>Patient From : <sup class="text-danger">*</sup></mat-label>
+                    <mat-radio-group aria-label="Select Your Gender" color="primary" formControlName="patientFrom">
+                        <mat-radio-button value="male">OPD</mat-radio-button>
+                        <mat-radio-button value="female">IPD</mat-radio-button>
+                        <!-- <mat-radio-button value="3">Others</mat-radio-button> -->
+                    </mat-radio-group>
+                    <p style="color: red;"
+                        *ngIf="bedAllotmentForm.get('patientFrom') && bedAllotmentForm.get('patientFrom').touched && bedAllotmentForm.get('patientFrom').invalid">
+                        Please enter this field</p>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <mat-form-field class="field-full-width">
+                        <mat-label>Bed Allotment<sup class="text-danger">*</sup></mat-label>
+                        <input matInput placeholder="Ex. xyz" value="" formControlName="bedAllotment" />
+                    </mat-form-field>
+                    <p style="color: red;"
+                        *ngIf="bedAllotmentForm.get('bedAllotment') && bedAllotmentForm.get('bedAllotment').touched && bedAllotmentForm.get('bedAllotment').invalid">
+                        Please enter this field</p>
+                </div>
+            </div>
+
+            <div class="row d-flex justify-content-around mt-4 ml-5 mr-5">
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <mat-form-field class="field-full-width">
+                        <mat-label>Ward Type<sup class="text-danger">*</sup></mat-label>
+                        <mat-select formControlName="wardType">
+                            <mat-option *ngFor="let role of doctorRoleList" [value]="role">
+                                {{role.doctorRoleName}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <p style="color: red;"
+                        *ngIf="bedAllotmentForm.get('wardType') && bedAllotmentForm.get('wardType').touched && bedAllotmentForm.get('wardType').invalid">
+                        Please select role</p>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <mat-form-field class="field-full-width">
+                        <mat-label>Room Number<sup class="text-danger">*</sup></mat-label>
+                        <mat-select formControlName="roomNumber">
+                            <mat-option *ngFor="let role of doctorRoleList" [value]="role">
+                                {{role.doctorRoleName}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <p style="color: red;"
+                        *ngIf="bedAllotmentForm.get('roomNumber') && bedAllotmentForm.get('roomNumber').touched && bedAllotmentForm.get('roomNumber').invalid">
+                        Please select role</p>
+                </div>
+            </div>
+
+            <div class="row d-flex justify-content-around mt-4 ml-5 mr-5">
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <mat-form-field class="field-full-width">
+                        <mat-label>Bed Number<sup class="text-danger">*</sup></mat-label>
+                        <mat-select formControlName="bedNumber">
+                            <mat-option *ngFor="let role of doctorRoleList" [value]="role">
+                                {{role.doctorRoleName}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <p style="color: red;"
+                        *ngIf="bedAllotmentForm.get('bedNumber') && bedAllotmentForm.get('bedNumber').touched && bedAllotmentForm.get('bedNumber').invalid">
+                        Please select role</p>
+                </div>
+                <div class="col-lg-4 col-md-12 col-sm-12">
+                    <mat-form-field class="field-full-width">
+                        <mat-label>Referred Department<sup class="text-danger">*</sup></mat-label>
+                        <mat-select formControlName="referredDept">
+                            <mat-option *ngFor="let role of doctorRoleList" [value]="role">
+                                {{role.doctorRoleName}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <p style="color: red;"
+                        *ngIf="bedAllotmentForm.get('referredDept') && bedAllotmentForm.get('referredDept').touched && bedAllotmentForm.get('referredDept').invalid">
+                        Please select role</p>
+                </div>
+                <div class="col-lg-4 col-md-12 col-sm-12">
+                    <mat-form-field class="field-full-width">
+                        <mat-label>Referred Doctor<sup class="text-danger">*</sup></mat-label>
+                        <input matInput placeholder="Ex. xyz" value="" formControlName="referredDoctor" />
+                    </mat-form-field>
+                    <p style="color: red;"
+                        *ngIf="bedAllotmentForm.get('referredDoctor') && bedAllotmentForm.get('referredDoctor').touched && bedAllotmentForm.get('referredDoctor').invalid">
+                        Please enter this field</p>
+                </div>
+            </div>
+
+
+            <div class="row d-flex justify-content-around mt-4 ml-5 mr-5">
+                <div class="col-lg-4 col-md-12 col-sm-12">
+                    <mat-form-field class="field-full-width">
+                        <mat-label>Attending Doctor<sup class="text-danger">*</sup></mat-label>
+                        <mat-select formControlName="attendingDoctor">
+                            <mat-option *ngFor="let role of doctorRoleList" [value]="role">
+                                {{role.doctorRoleName}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <p style="color: red;"
+                        *ngIf="bedAllotmentForm.get('attendingDoctor') && bedAllotmentForm.get('attendingDoctor').touched && bedAllotmentForm.get('attendingDoctor').invalid">
+                        Please select role</p>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <mat-form-field class="field-full-width">
+                        <mat-label>Admitted Date</mat-label>
+                        <input matInput type="date" placeholder="Ex. 10/2/2020" value="" color="primary"
+                            formControlName="admittedDate" id='from' />
+                    </mat-form-field>
+                    <p style="color: red;"
+                        *ngIf="bedAllotmentForm.get('admittedDate') && bedAllotmentForm.get('admittedDate').touched && bedAllotmentForm.get('admittedDate').invalid">
+                        Please enter this field</p>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <mat-form-field class="field-full-width">
+                        <mat-label>Discharged Date</mat-label>
+                        <input matInput type="date" placeholder="Ex. 15/2/1995" value="" color="primary"
+                            formControlName="dischargedDate" id='from' />
+                    </mat-form-field>
+                    <p style="color: red;"
+                        *ngIf="bedAllotmentForm.get('dischargedDate') && bedAllotmentForm.get('dischargedDate').touched && bedAllotmentForm.get('dischargedDate').invalid">
+                        Please enter this field</p>
+                </div>
+            </div>
+
+            <div class="row d-flex justify-content-around mt-4 ml-5 mr-5">
+                <div class="col-lg-4 col-md-6 col-sm-12">
+
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-around">
+                    <button type="submit" mat-raised-button color="primary" [disabled]='bedAllotmentForm.invalid'>
+                        <mat-icon class="mr-2">save</mat-icon>Submit
+                    </button>
+                    <button type="reset" mat-raised-button color="accent">
+                        <mat-icon class="mr-2">360</mat-icon>Reset
+                    </button>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

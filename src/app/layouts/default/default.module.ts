@@ -45,6 +45,7 @@ import { Ng2OdometerModule } from "ng2-odometer";
 import { CategorydashboardComponent } from 'src/app/modules/dashboard/categorydashboard/categorydashboard.component';
 import { PrintreportComponent } from 'src/app/modules/admin/lab/printreport/printreport.component';
 import { BedModule } from 'src/app/modules/ipd/bed/bed.module';
+import { TreatmentModule } from 'src/app/modules/ipd/treatment/treatment.module';
 @NgModule({
   declarations: [
     DefaultComponent,
@@ -99,7 +100,8 @@ import { BedModule } from 'src/app/modules/ipd/bed/bed.module';
     MatBadgeModule,
     MatAutocompleteModule,
     ReferalnoteModule,
-    BedModule
+    BedModule,
+    TreatmentModule
 
   ],
 })

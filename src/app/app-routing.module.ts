@@ -73,6 +73,8 @@ import { GeneratelabreportComponent } from './modules/admin/lab/generatelabrepor
 import { CategorydashboardComponent } from './modules/dashboard/categorydashboard/categorydashboard.component';
 import { PrintreportComponent } from './modules/admin/lab/printreport/printreport.component';
 import { BedallotmentComponent } from './modules/ipd/bed/bedallotment/bedallotment.component';
+import { PreliminaryComponent } from './modules/ipd/treatment/preliminary/preliminary.component';
+import { DischargeipdComponent } from './modules/ipd/treatment/dischargeipd/dischargeipd.component';
 
 const routes: Routes = [
   {
@@ -239,7 +241,11 @@ const routes: Routes = [
       // Vikash Kumar routing ends here
 
       // IPD Starts Here
-      { path: "bedallotment", component: BedallotmentComponent }
+      { path: "bedallotment", component: BedallotmentComponent },
+      { path: "preliminary", component: PreliminaryComponent },
+      { path: "dischargipd", component: DischargeipdComponent }
+
+      // IPD Ends Here
     ],
   },
 ];

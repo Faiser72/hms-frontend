@@ -55,3 +55,27 @@ mat-datepicker-toggle {
 button {
     outline: none;
 }
+
+.header-text p {
+    color: var(--main-font-3-color);
+}
+
+.tablecss th {
+    color: var(--main-font-3-color);
+}
+
+.tablecss td {
+    color: var(--main-font-4-color);
+}
+
+.rowAddIcon {
+    // color: green;
+    cursor   : pointer;
+    font-size: xx-large
+}
+
+.rowDeleteIcon {
+    // color:red;
+    cursor   : pointer;
+    font-size: xx-large
+}
