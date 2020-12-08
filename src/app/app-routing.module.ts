@@ -75,6 +75,7 @@ import { PrintreportComponent } from './modules/admin/lab/printreport/printrepor
 import { BedallotmentComponent } from './modules/ipd/bed/bedallotment/bedallotment.component';
 import { PreliminaryComponent } from './modules/ipd/treatment/preliminary/preliminary.component';
 import { DischargeipdComponent } from './modules/ipd/treatment/dischargeipd/dischargeipd.component';
+import { PatientdiagnosisipdComponent } from './modules/ipd/treatment/patientdiagnosisipd/patientdiagnosisipd.component';
 
 const routes: Routes = [
   {
@@ -243,7 +244,8 @@ const routes: Routes = [
       // IPD Starts Here
       { path: "bedallotment", component: BedallotmentComponent },
       { path: "preliminary", component: PreliminaryComponent },
-      { path: "dischargipd", component: DischargeipdComponent }
+      { path: "dischargipd", component: DischargeipdComponent },
+      { path: "diagnosisipd", component: PatientdiagnosisipdComponent }
 
       // IPD Ends Here
     ],
