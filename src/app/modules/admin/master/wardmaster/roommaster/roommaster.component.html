@@ -1,7 +1,7 @@
 <!-- 
-File Name :-labtestmaster.component.html	   	Created Date :-22-09-2020     Created By :- Faiser I (Emp. Id : VTPL/BLR/006)
+File Name :-roommaster.component.html	   	Created Date :-09-12-2020     Created By :- Faiser I (Emp. Id : VTPL/BLR/006)
 	
-Description :- this component is used to add labtest names,					
+Description :- this component is used to add rooms based on ward,					
 	
 ============================================================================================================================
   Sl.No			    Description			                                Modified By		              	      Modified Date	
@@ -13,45 +13,40 @@ Description :- this component is used to add labtest names,
 <div class="container-fluid mt-3">
     <div class="card">
         <div class="card-title">
-            <h4 class="text-center main-bg pt-3">- Lab Test Master -</h4>
+            <h4 class="text-center main-bg pt-3">- Room Master -</h4>
         </div>
         <mat-divider class="mx-5"></mat-divider>
         <div class="card-body text-dark">
             <div class="card w-50 d-flex justify-content-center border-0 mx-auto">
-                <form class="master-form" [formGroup]="addLabTestMasterForm">
+                <form class="master-form" [formGroup]="addRoomMasterForm">
                     <mat-form-field class="master-full-width">
-                        <mat-label>Lab Test Name</mat-label>
-                        <input matInput placeholder="Enter Test Name" formControlName="labtestName">
+                        <mat-label>Ward Name</mat-label>
+                        <mat-select formControlName="wardTypeName">
+                            <mat-option *ngFor="let role of doctorRoleList" [value]="role">
+                                {{role.doctorRoleName}}
+                            </mat-option>
+                        </mat-select>
                     </mat-form-field>
                     <p style="color: red;"
-                        *ngIf="addLabTestMasterForm.get('labtestName') && addLabTestMasterForm.get('labtestName').touched && addLabTestMasterForm.get('labtestName').invalid">
-                        {{labtestNameInputMsg}}</p>
+                        *ngIf="addRoomMasterForm.get('wardTypeName') && addRoomMasterForm.get('wardTypeName').touched && addRoomMasterForm.get('wardTypeName').invalid">
+                        {{wardTypeNameInputMsg}}</p>
 
                     <mat-form-field class="master-full-width">
-                        <mat-label>Min Value</mat-label>
-                        <input matInput placeholder="Enter Min Value" formControlName="minValue">
+                        <mat-label>Room No</mat-label>
+                        <textarea matInput placeholder="101,102,103,104" formControlName="roomNo"></textarea>
+                        <mat-icon matSuffix color="primary">description</mat-icon>
                     </mat-form-field>
                     <p style="color: red;"
-                        *ngIf="addLabTestMasterForm.get('minValue') && addLabTestMasterForm.get('minValue').touched && addLabTestMasterForm.get('minValue').invalid">
-                        {{minValueInputMsg}}</p>
-
-                    <mat-form-field class="master-full-width">
-                        <mat-label>Max Value</mat-label>
-                        <input matInput placeholder="Enter Max Value" formControlName="maxValue">
-                    </mat-form-field>
-                    <p style="color: red;"
-                        *ngIf="addLabTestMasterForm.get('maxValue') && addLabTestMasterForm.get('maxValue').touched && addLabTestMasterForm.get('maxValue').invalid">
-                        {{maxValueInputMsg}}</p>
+                        *ngIf="addRoomMasterForm.get('roomNo') && addRoomMasterForm.get('roomNo').touched && addRoomMasterForm.get('roomNo').invalid">
+                        Please enter this field</p>
 
                     <div class="text-center mt-4">
-                        <button [disabled]="addLabTestMasterForm.invalid" mat-raised-button *ngIf="!btnFlag"
-                            class="mb-2 mr-3 submit-btn" color="primary" type="submit"
-                            (click)="saveDoctorRoleDetails()">
+                        <button [disabled]="addRoomMasterForm.invalid" mat-raised-button *ngIf="!btnFlag"
+                            class="mb-2 mr-3 submit-btn" color="primary" type="submit" (click)="saveRoomDetails()">
                             <mat-icon class="mr-2">save</mat-icon>Save
                         </button>
-                        <button [disabled]="addLabTestMasterForm.invalid" mat-raised-button *ngIf="btnFlag"
-                            class="mb-2 mr-3 submit-btn" color="primary" type="submit"
-                            (click)="updateDoctorRoleDetails()">
+                        <button [disabled]="addRoomMasterForm.invalid" mat-raised-button *ngIf="btnFlag"
+                            class="mb-2 mr-3 submit-btn" color="primary" type="submit" (click)="updateRoomDetails()">
                             <mat-icon class="mr-2">save</mat-icon>Update
                         </button>
                         <button type="reset" class="mb-2 reset-btn" mat-raised-button color="warn" *ngIf="btnFlag"
@@ -67,7 +62,7 @@ Description :- this component is used to add labtest names,
 <!-- <router-outlet></router-outlet> -->
 
 <br />
-<h4 class="title-header">- Lab Test List -</h4>
+<h4 class="title-header">- Room List -</h4>
 
 <div class="text-center">
     <mat-form-field class="search">
@@ -84,19 +79,20 @@ Description :- this component is used to add labtest names,
             <td mat-cell *matCellDef="let row">{{dataSource.filteredData.indexOf(row) + 1}}.</td>
         </ng-container>
 
-        <!-- labtestName Column -->
-        <ng-container matColumnDef="labtestName">
+        <!-- wardTypeName Column -->
+        <ng-container matColumnDef="wardTypeName">
             <th mat-header-cell *matHeaderCellDef mat-sort-header class="table_header">
-                Lab Test Name
+                Ward Name
             </th>
-            <td mat-cell *matCellDef="let row">{{ row.labtestName }}</td>
+            <td mat-cell *matCellDef="let row">{{ row.wardTypeName }}</td>
         </ng-container>
 
-        <ng-container matColumnDef="range">
+        <!-- roomNo -->
+        <ng-container matColumnDef="roomNo">
             <th mat-header-cell *matHeaderCellDef mat-sort-header class="table_header">
-                Range
+                Room No
             </th>
-            <td mat-cell *matCellDef="let row">{{ row.range }}</td>
+            <td mat-cell *matCellDef="let row">{{ row.roomNo }}</td>
         </ng-container>
 
         <!-- Action Column -->
@@ -104,13 +100,13 @@ Description :- this component is used to add labtest names,
             <th mat-header-cell *matHeaderCellDef class="table_header">Action</th>
             <td mat-cell *matCellDef="let row;">
                 <div class="action-btn">
-                    <a (click)="routeToEditDoctorRole(this.row)" class="action-link">
+                    <a (click)="routeToEditRoom(this.row)" class="action-link">
                         <mat-icon class="edit-btn" title="Edit">edit</mat-icon>
                     </a>
                 </div>
                 <span style="color: #3f51b5;">|</span>
                 <div class="action-btn">
-                    <a (click)="routeToDeleteDoctorRole(this.row)" class="action-link">
+                    <a (click)="routeToDeleteRoom(this.row)" class="action-link">
                         <mat-icon class="delete-btn" title="Delete">delete_forever</mat-icon>
                     </a>
                 </div>

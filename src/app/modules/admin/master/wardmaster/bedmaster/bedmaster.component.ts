@@ -6,23 +6,25 @@ import { isNullOrUndefined } from 'util';
 import { disablePrefixSpace } from '../../../custom.validation';
 
 @Component({
-  selector: 'app-labtestmaster',
-  templateUrl: './labtestmaster.component.html',
-  styleUrls: ['./labtestmaster.component.scss']
+  selector: 'app-bedmaster',
+  templateUrl: './bedmaster.component.html',
+  styleUrls: ['./bedmaster.component.scss']
 })
-export class LabtestmasterComponent implements OnInit {
+export class BedmasterComponent implements OnInit {
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   dataSource: any;
-  addLabTestMasterForm: FormGroup;
+  addBedForm: FormGroup;
 
   searchValue: string = null;
   displayedColumns: string[] = [
     "slNo",
-    "labtestName",
-    "range",
+    "wardTypeName",
+    "roomNo",
+    "bedNo",
+    "bedCost",
     "action"
   ];
   doctorRoleDetailsList: any;
@@ -32,7 +34,7 @@ export class LabtestmasterComponent implements OnInit {
     // private doctorRoleMasterService: DoctorrolemasterserviceService, 
     private _snackBar: MatSnackBar,
     private router: Router) {
-    this.addLabTestMasterFormBuilder();
+    this.addBedFormBuilder();
   }
 
   ngOnInit() {
@@ -52,72 +54,72 @@ export class LabtestmasterComponent implements OnInit {
   }
   customFilter() {
     this.dataSource.filterPredicate = (data, filter) => {
-      const dataStr = data.labtestName;
+      const dataStr = data.wardTypeName;
       return dataStr.trim().toLowerCase().indexOf(filter) != -1;
     }
   }
 
-  addLabTestMasterFormBuilder() {
-    this.addLabTestMasterForm = this.fb.group({
+  addBedFormBuilder() {
+    this.addBedForm = this.fb.group({
       doctorRoleId: [0],
-      labtestName: [null, [Validators.required, disablePrefixSpace]],
-      description: [null, [Validators.required, disablePrefixSpace]],
-      minValue: [null, [Validators.required, disablePrefixSpace]],
-      maxValue: [null, [Validators.required, disablePrefixSpace]],
+      wardTypeName: [null, [Validators.required, disablePrefixSpace]],
+      roomNo: [null, [Validators.required, disablePrefixSpace]],
+      bedNo: [null, [Validators.required, disablePrefixSpace]],
+      bedCost: [null, [Validators.required, disablePrefixSpace]],
     });
-    this.addLabTestMasterForm.setValidators(this.customValidation());
+    this.addBedForm.setValidators(this.customValidation());
   }
 
-  labtestNameInputMsg: string;
+  wardTypeNameInputMsg: string;
   minValueInputMsg: string = "Please enter this field."
   maxValueInputMsg: string = "Please enter this field."
-  labtestName: string;
+  wardTypeName: string;
   customValidation(): ValidatorFn {
     return (formGroup: FormGroup): ValidationErrors => {
-      const labtestNameFormGroup = formGroup.controls['labtestName'];
-      if (labtestNameFormGroup.value !== '' && labtestNameFormGroup.value !== null) {
-        if (labtestNameFormGroup.valid) {
+      const wardTypeNameFormGroup = formGroup.controls['wardTypeName'];
+      if (wardTypeNameFormGroup.value !== '' && wardTypeNameFormGroup.value !== null) {
+        if (wardTypeNameFormGroup.valid) {
           if (this.btnFlag) {
             if (!isNullOrUndefined(this.doctorRoleDetailsListExceptOne)) {
               this.doctorRoleDetailsListExceptOne.forEach((data: any) => {
-                if (data.labtestName.toLowerCase() == labtestNameFormGroup.value.trim().toLowerCase().replace(/\s+/g, ' ')) {
-                  this.labtestName = data.labtestName.toLowerCase();
-                  this.labtestNameInputMsg = 'This doctorRole name already exist.';
-                  labtestNameFormGroup.setErrors({});
+                if (data.wardTypeName.toLowerCase() == wardTypeNameFormGroup.value.trim().toLowerCase().replace(/\s+/g, ' ')) {
+                  this.wardTypeName = data.wardTypeName.toLowerCase();
+                  this.wardTypeNameInputMsg = 'This doctorRole name already exist.';
+                  wardTypeNameFormGroup.setErrors({});
                 }
               });
             }
           } else {
             if (!isNullOrUndefined(this.doctorRoleDetailsList)) {
               this.doctorRoleDetailsList.forEach((data: any) => {
-                if (data.labtestName.toLowerCase() == labtestNameFormGroup.value.trim().toLowerCase().replace(/\s+/g, ' ')) {
-                  this.labtestName = data.labtestName.toLowerCase();
-                  this.labtestNameInputMsg = 'This doctorRole name already exist.';
-                  labtestNameFormGroup.setErrors({});
+                if (data.wardTypeName.toLowerCase() == wardTypeNameFormGroup.value.trim().toLowerCase().replace(/\s+/g, ' ')) {
+                  this.wardTypeName = data.wardTypeName.toLowerCase();
+                  this.wardTypeNameInputMsg = 'This doctorRole name already exist.';
+                  wardTypeNameFormGroup.setErrors({});
                 }
               });
             }
           }
         } else {
-          if (this.labtestName == labtestNameFormGroup.value.trim().toLowerCase().replace(/\s+/g, ' ')) {
-            this.labtestNameInputMsg = 'This doctorRole name already exist.';
+          if (this.wardTypeName == wardTypeNameFormGroup.value.trim().toLowerCase().replace(/\s+/g, ' ')) {
+            this.wardTypeNameInputMsg = 'This doctorRole name already exist.';
           } else {
-            this.labtestNameInputMsg = 'Please enter a valid doctoRRole name';
+            this.wardTypeNameInputMsg = 'Please enter a valid doctoRRole name';
           }
         }
       } else {
-        this.labtestNameInputMsg = 'Please enter this field.';
+        this.wardTypeNameInputMsg = 'Please enter this field.';
       }
 
       return;
     };
   }
 
-  saveDoctorRoleDetails() {
-    let labtestName = this.addLabTestMasterForm.get('labtestName').value;
-    this.addLabTestMasterForm.patchValue({ labtestName: labtestName.trim().replace(/\s+/g, ' ') });
-    // if (this.addLabTestMasterForm.valid) {
-    //   this.doctorRoleMasterService.saveDoctorRoleMasterDetails(this.addLabTestMasterForm.value).subscribe((resp: any) => {
+  saveBedDetails() {
+    let wardTypeName = this.addBedForm.get('wardTypeName').value;
+    this.addBedForm.patchValue({ wardTypeName: wardTypeName.trim().replace(/\s+/g, ' ') });
+    // if (this.addBedForm.valid) {
+    //   this.doctorRoleMasterService.saveDoctorRoleMasterDetails(this.addBedForm.value).subscribe((resp: any) => {
     //     if (resp.success) {
     //       alert(resp.message);
     //       this.customReset();
@@ -141,34 +143,34 @@ export class LabtestmasterComponent implements OnInit {
     }
   }
 
-  routeToDeleteDoctorRole(doctorRoleDetails: any) {
+  routeToDeleteBed(doctorRoleDetails: any) {
     let index = this.doctorRoleDetailsList.findIndex((data: any) => data.doctorRoleId === doctorRoleDetails.doctorRoleId);
     // if ((doctorRoleDetails.doctorRoleId > 0) && (index > -1)) {
     //   this.doctorRoleMasterService.deleteDoctorRoleMasterDetails(doctorRoleDetails.doctorRoleId).subscribe((resp: any) => {
     //     this.doctorRoleDetailsList.splice(index, 1);
     //     this.customReset();
-    //     this._snackBar.open(doctorRoleDetails.labtestName, resp.message, { duration: 2500 });
+    //     this._snackBar.open(doctorRoleDetails.wardTypeName, resp.message, { duration: 2500 });
     //   });
     // }
   }
 
   btnFlag: boolean = false;
-  routeToEditDoctorRole(doctorRoleDetails: any) {
+  routeToEditBed(doctorRoleDetails: any) {
     this.btnFlag = true;
     // this.doctorRoleMasterService.getDoctorRoleMasterListExceptOne(doctorRoleDetails.doctorRoleId).subscribe((data: any) => {
     //   this.doctorRoleDetailsListExceptOne = data.listObject;
-    //   this.addLabTestMasterForm.patchValue({
-    //     labtestName: doctorRoleDetails.labtestName,
+    //   this.addBedForm.patchValue({
+    //     wardTypeName: doctorRoleDetails.wardTypeName,
     //     doctorRoleId: doctorRoleDetails.doctorRoleId
     //   });
     // });
   }
 
-  updateDoctorRoleDetails() {
-    let labtestName = this.addLabTestMasterForm.get('labtestName').value;
-    this.addLabTestMasterForm.patchValue({ labtestName: labtestName.trim().replace(/\s+/g, ' ') });
-    // if (this.addLabTestMasterForm.valid) {
-    //   this.doctorRoleMasterService.updateDoctorRoleMasterDetails(this.addLabTestMasterForm.value).subscribe((resp: any) => {
+  updateBedDetails() {
+    let wardTypeName = this.addBedForm.get('wardTypeName').value;
+    this.addBedForm.patchValue({ wardTypeName: wardTypeName.trim().replace(/\s+/g, ' ') });
+    // if (this.addBedForm.valid) {
+    //   this.doctorRoleMasterService.updateDoctorRoleMasterDetails(this.addBedForm.value).subscribe((resp: any) => {
     //     if (resp.success) {
     //       alert(resp.message);
     //       this.customReset();
@@ -184,7 +186,7 @@ export class LabtestmasterComponent implements OnInit {
 
 
   customReset() {
-    this.addLabTestMasterForm.reset();
+    this.addBedForm.reset();
     this.ngOnInit();
     this.btnFlag = false;
     this.searchValue = null;

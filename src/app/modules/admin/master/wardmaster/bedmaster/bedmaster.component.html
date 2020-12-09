@@ -1,0 +1,157 @@
+<!-- 
+File Name :-bedmaster.component.html	   	Created Date :-09-12-2020     Created By :- Faiser I (Emp. Id : VTPL/BLR/006)
+	
+Description :- this component is used to add bed numbers based on room and ward,					
+	
+============================================================================================================================
+  Sl.No			    Description			                                Modified By		              	      Modified Date	
+============================================================================================================================
+	
+	
+ -->
+
+<div class="container-fluid mt-3">
+    <div class="card">
+        <div class="card-title">
+            <h4 class="text-center main-bg pt-3">- Bed Master -</h4>
+        </div>
+        <mat-divider class="mx-5"></mat-divider>
+        <div class="card-body text-dark">
+            <div class="card w-50 d-flex justify-content-center border-0 mx-auto">
+                <form class="master-form" [formGroup]="addBedForm">
+                    <mat-form-field class="master-full-width">
+                        <mat-label>Ward Name</mat-label>
+                        <mat-select formControlName="wardTypeName">
+                            <mat-option *ngFor="let role of doctorRoleList" [value]="role">
+                                {{role.doctorRoleName}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <p style="color: red;"
+                        *ngIf="addBedForm.get('wardTypeName') && addBedForm.get('wardTypeName').touched && addBedForm.get('wardTypeName').invalid">
+                        {{wardTypeNameInputMsg}}</p>
+
+                    <mat-form-field class="master-full-width">
+                        <mat-label>Room No</mat-label>
+                        <mat-select formControlName="roomNo">
+                            <mat-option *ngFor="let role of doctorRoleList" [value]="role">
+                                {{role.doctorRoleName}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <p style="color: red;"
+                        *ngIf="addBedForm.get('roomNo') && addBedForm.get('roomNo').touched && addBedForm.get('roomNo').invalid">
+                        {{wardTypeNameInputMsg}}</p>
+
+
+                    <mat-form-field class="master-full-width">
+                        <mat-label>Bed No</mat-label>
+                        <textarea matInput placeholder="1,2,3,4,5" formControlName="bedNo"></textarea>
+                    </mat-form-field>
+                    <p style="color: red;"
+                        *ngIf="addBedForm.get('bedNo') && addBedForm.get('bedNo').touched && addBedForm.get('bedNo').invalid">
+                        {{minValueInputMsg}}</p>
+
+                    <mat-form-field class="master-full-width">
+                        <mat-label>Bed Cost</mat-label>
+                        <input matInput placeholder="Ex: 900" formControlName="bedCost">
+                        <mat-icon matSuffix color="primary"><i class="fa fa-inr" aria-hidden="true"></i></mat-icon>
+                    </mat-form-field>
+                    <p style="color: red;"
+                        *ngIf="addBedForm.get('bedCost') && addBedForm.get('bedCost').touched && addBedForm.get('bedCost').invalid">
+                        {{maxValueInputMsg}}</p>
+
+                    <div class="text-center mt-4">
+                        <button [disabled]="addBedForm.invalid" mat-raised-button *ngIf="!btnFlag"
+                            class="mb-2 mr-3 submit-btn" color="primary" type="submit" (click)="saveBedDetails()">
+                            <mat-icon class="mr-2">save</mat-icon>Save
+                        </button>
+                        <button [disabled]="addBedForm.invalid" mat-raised-button *ngIf="btnFlag"
+                            class="mb-2 mr-3 submit-btn" color="primary" type="submit" (click)="updateBedDetails()">
+                            <mat-icon class="mr-2">save</mat-icon>Update
+                        </button>
+                        <button type="reset" class="mb-2 reset-btn" mat-raised-button color="warn" *ngIf="btnFlag"
+                            (click)="customReset()">
+                            <mat-icon class="mr-2">cancel</mat-icon>Cancel
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <router-outlet></router-outlet> -->
+
+<br />
+<h4 class="title-header">- Bed List -</h4>
+
+<div class="text-center">
+    <mat-form-field class="search">
+        <!-- <mat-label>Search Department</mat-label> -->
+        <input matInput (keyup)="applyFilter($event)" placeholder="Search here..." [(ngModel)]="searchValue" />
+    </mat-form-field>
+</div>
+
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+        <!-- ID Column -->
+        <ng-container matColumnDef="slNo">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="table_header">Sl.no</th>
+            <td mat-cell *matCellDef="let row">{{dataSource.filteredData.indexOf(row) + 1}}.</td>
+        </ng-container>
+
+        <!-- wardTypeName Column -->
+        <ng-container matColumnDef="wardTypeName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="table_header">
+                Ward
+            </th>
+            <td mat-cell *matCellDef="let row">{{ row.wardTypeName }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="roomNo">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="table_header">
+                Room No
+            </th>
+            <td mat-cell *matCellDef="let row">{{ row.roomNo }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="bedNo">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="table_header">
+                Bed No
+            </th>
+            <td mat-cell *matCellDef="let row">{{ row.bedNo }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="bedCost">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="table_header">
+                Bed Cost
+            </th>
+            <td mat-cell *matCellDef="let row">{{ row.bedCost }}</td>
+        </ng-container>
+
+        <!-- Action Column -->
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef class="table_header">Action</th>
+            <td mat-cell *matCellDef="let row;">
+                <div class="action-btn">
+                    <a (click)="routeToEditBed(this.row)" class="action-link">
+                        <mat-icon class="edit-btn" title="Edit">edit</mat-icon>
+                    </a>
+                </div>
+                <span style="color: #3f51b5;">|</span>
+                <div class="action-btn">
+                    <a (click)="routeToDeleteBed(this.row)" class="action-link">
+                        <mat-icon class="delete-btn" title="Delete">delete_forever</mat-icon>
+                    </a>
+                </div>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr class="row-style" mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>
+
+<br />

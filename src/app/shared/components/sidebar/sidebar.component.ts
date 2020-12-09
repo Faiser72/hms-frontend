@@ -45,7 +45,7 @@ export class SidebarComponent implements OnInit {
     }
   }
 
-  toggleInternalReference(submenu: string){
+  toggleInternalReference(submenu: string) {
     let element = document.getElementById(submenu);
     if (element.style.display == '' || element.style.display == 'none') {
       element.style.display = 'block';

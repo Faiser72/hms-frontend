@@ -76,6 +76,9 @@ import { BedallotmentComponent } from './modules/ipd/bed/bedallotment/bedallotme
 import { PreliminaryComponent } from './modules/ipd/treatment/preliminary/preliminary.component';
 import { DischargeipdComponent } from './modules/ipd/treatment/dischargeipd/dischargeipd.component';
 import { PatientdiagnosisipdComponent } from './modules/ipd/treatment/patientdiagnosisipd/patientdiagnosisipd.component';
+import { WardmasterComponent } from './modules/admin/master/wardmaster/wardmaster/wardmaster.component';
+import { RoommasterComponent } from './modules/admin/master/wardmaster/roommaster/roommaster.component';
+import { BedmasterComponent } from './modules/admin/master/wardmaster/bedmaster/bedmaster.component';
 
 const routes: Routes = [
   {
@@ -245,7 +248,12 @@ const routes: Routes = [
       { path: "bedallotment", component: BedallotmentComponent },
       { path: "preliminary", component: PreliminaryComponent },
       { path: "dischargipd", component: DischargeipdComponent },
-      { path: "diagnosisipd", component: PatientdiagnosisipdComponent }
+      { path: "diagnosisipd", component: PatientdiagnosisipdComponent },
+      { path: "wardtypemaster", component: WardmasterComponent },
+      { path: "roommaster", component: RoommasterComponent },
+      { path: "bedmaster", component: BedmasterComponent }
+
+
 
       // IPD Ends Here
     ],

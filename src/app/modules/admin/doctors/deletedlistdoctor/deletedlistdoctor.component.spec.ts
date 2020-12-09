@@ -8,9 +8,9 @@ describe('DeletedlistdoctorComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DeletedlistdoctorComponent ]
+      declarations: [DeletedlistdoctorComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -25,7 +25,8 @@ Description :- this module is used to add doctors details,
                                 <mat-label>Doctor Name <sup class="text-danger">*</sup></mat-label>
                                 <input matInput placeholder="Ex. Dr. Sudhakar" value="" formControlName="doctorName" />
                             </mat-form-field>
-                            <p style="color: red;" *ngIf="addDoctorDetailsForm.get('doctorName') && addDoctorDetailsForm.get('doctorName').touched && addDoctorDetailsForm.get('doctorName').invalid">
+                            <p style="color: red;"
+                                *ngIf="addDoctorDetailsForm.get('doctorName') && addDoctorDetailsForm.get('doctorName').touched && addDoctorDetailsForm.get('doctorName').invalid">
                                 Please enter this field</p>
                         </div>
                     </div>
@@ -36,7 +37,8 @@ Description :- this module is used to add doctors details,
                                 <mat-label>Qualification <sup class="text-danger">*</sup></mat-label>
                                 <input matInput placeholder="Ex. MBBS, MD" value="" formControlName="qualification" />
                             </mat-form-field>
-                            <p style="color: red;" *ngIf="addDoctorDetailsForm.get('qualification') && addDoctorDetailsForm.get('qualification').touched && addDoctorDetailsForm.get('qualification').invalid">
+                            <p style="color: red;"
+                                *ngIf="addDoctorDetailsForm.get('qualification') && addDoctorDetailsForm.get('qualification').touched && addDoctorDetailsForm.get('qualification').invalid">
                                 Please enter this field</p>
                         </div>
                     </div>
@@ -45,9 +47,11 @@ Description :- this module is used to add doctors details,
                         <div class="col-lg-12 col-sm-12 col-md-12">
                             <mat-form-field class="field-full-width">
                                 <mat-label>Specialization <sup class="text-danger">*</sup></mat-label>
-                                <input matInput placeholder="Ex. Dermatologists" value="" formControlName="specialization" />
+                                <input matInput placeholder="Ex. Dermatologists" value=""
+                                    formControlName="specialization" />
                             </mat-form-field>
-                            <p style="color: red;" *ngIf="addDoctorDetailsForm.get('specialization') && addDoctorDetailsForm.get('specialization').touched && addDoctorDetailsForm.get('specialization').invalid">
+                            <p style="color: red;"
+                                *ngIf="addDoctorDetailsForm.get('specialization') && addDoctorDetailsForm.get('specialization').touched && addDoctorDetailsForm.get('specialization').invalid">
                                 Please enter this field</p>
                         </div>
                     </div>
@@ -58,7 +62,8 @@ Description :- this module is used to add doctors details,
                                 <mat-label>Regester Number <sup class="text-danger">*</sup></mat-label>
                                 <input matInput placeholder="Ex. CMS123VETO" value="" formControlName="registerNo" />
                             </mat-form-field>
-                            <p style="color: red;" *ngIf="addDoctorDetailsForm.get('registerNo') && addDoctorDetailsForm.get('registerNo').touched && addDoctorDetailsForm.get('registerNo').invalid">
+                            <p style="color: red;"
+                                *ngIf="addDoctorDetailsForm.get('registerNo') && addDoctorDetailsForm.get('registerNo').touched && addDoctorDetailsForm.get('registerNo').invalid">
                                 Please enter this field</p>
                         </div>
                     </div>
@@ -69,8 +74,10 @@ Description :- this module is used to add doctors details,
                 <div class="col-lg-2 col-sm-12 col-md-6">
                     <label for="avatar">Profile Photo</label>
                     <div class="text-left mt-2">
-                        <img [src]="placeholder_path" alt="" width="150px" height="180px" class="p-1 border profile-holder" (click)="photoUpload.click()" />
-                        <input type="file" name="photoUpload" accept="image/*" id="photoUpload" #photoUpload (change)="getPhotoFile(photoUpload, $event)" hidden formControlName="avatar" />
+                        <img [src]="placeholder_path" alt="" width="150px" height="180px"
+                            class="p-1 border profile-holder" (click)="photoUpload.click()" />
+                        <input type="file" name="photoUpload" accept="image/*" id="photoUpload" #photoUpload
+                            (change)="getPhotoFile(photoUpload, $event)" hidden formControlName="avatar" />
                         <div>
                             <span class="candidate-photo-name">&nbsp;&nbsp;</span>
                             <span style="color: red;" *ngIf="photoMessage">{{
@@ -79,7 +86,8 @@ Description :- this module is used to add doctors details,
                         </div>
                         <br />
                     </div>
-                    <p style="color: red;" *ngIf="addDoctorDetailsForm.get('avatar') && addDoctorDetailsForm.get('avatar').touched && addDoctorDetailsForm.get('avatar').invalid">
+                    <p style="color: red;"
+                        *ngIf="addDoctorDetailsForm.get('avatar') && addDoctorDetailsForm.get('avatar').touched && addDoctorDetailsForm.get('avatar').invalid">
                         Please enter this field</p>
                 </div>
             </div>
@@ -109,11 +117,13 @@ Description :- this module is used to add doctors details,
                 <div class="col-lg-2 col-sm-12 col-md-6">
                     <mat-form-field class="field-full-width">
                         <mat-label>Date Of Birth <sup class="text-danger">*</sup></mat-label>
-                        <input matInput [matDatepicker]="picker" placeholder="Ex. 7/2/1995" value="" #dob (dateChange)='ageFromDateOfBirth($event)' formControlName="dob" />
+                        <input matInput [matDatepicker]="picker" placeholder="Ex. 7/2/1995" value="" #dob
+                            (dateChange)='ageFromDateOfBirth($event)' formControlName="dob" />
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
                     </mat-form-field>
-                    <p style="color: red;" *ngIf="addDoctorDetailsForm.get('dob') && addDoctorDetailsForm.get('dob').touched && addDoctorDetailsForm.get('dob').invalid">
+                    <p style="color: red;"
+                        *ngIf="addDoctorDetailsForm.get('dob') && addDoctorDetailsForm.get('dob').touched && addDoctorDetailsForm.get('dob').invalid">
                         Please select photo</p>
                 </div>
                 <div class="col-lg-1 col-sm-12 col-md-6">
@@ -121,7 +131,8 @@ Description :- this module is used to add doctors details,
                         <mat-label>Age <sup class="text-danger">*</sup></mat-label>
                         <input matInput placeholder="Ex. 25" value="{{age}}" formControlName="age" readonly="true" />
                     </mat-form-field>
-                    <p style="color: red;" *ngIf="addDoctorDetailsForm.get('age') && addDoctorDetailsForm.get('age').touched && addDoctorDetailsForm.get('age').invalid">
+                    <p style="color: red;"
+                        *ngIf="addDoctorDetailsForm.get('age') && addDoctorDetailsForm.get('age').touched && addDoctorDetailsForm.get('age').invalid">
                         Please enter this field</p>
                 </div>
                 <div class="col-lg-3 mt-4 col-sm-12 col-md-6 text-center">
@@ -131,7 +142,8 @@ Description :- this module is used to add doctors details,
                         <mat-radio-button value="female">Female</mat-radio-button>
                         <!-- <mat-radio-button value="3">Others</mat-radio-button> -->
                     </mat-radio-group>
-                    <p style="color: red;" *ngIf="addDoctorDetailsForm.get('gender') && addDoctorDetailsForm.get('gender').touched && addDoctorDetailsForm.get('gender').invalid">
+                    <p style="color: red;"
+                        *ngIf="addDoctorDetailsForm.get('gender') && addDoctorDetailsForm.get('gender').touched && addDoctorDetailsForm.get('gender').invalid">
                         Please select your gender</p>
                 </div>
                 <div class="col-lg-2 col-sm-12 col-md-6">
@@ -139,17 +151,20 @@ Description :- this module is used to add doctors details,
                         <mat-label>Experience <sup class="text-danger">*</sup></mat-label>
                         <input matInput placeholder="Ex. 5 years" value="" formControlName="experience" />
                     </mat-form-field>
-                    <p style="color: red;" *ngIf="addDoctorDetailsForm.get('experience') && addDoctorDetailsForm.get('experience').touched && addDoctorDetailsForm.get('experience').invalid">
+                    <p style="color: red;"
+                        *ngIf="addDoctorDetailsForm.get('experience') && addDoctorDetailsForm.get('experience').touched && addDoctorDetailsForm.get('experience').invalid">
                         Please enter this field</p>
                 </div>
                 <div class="col-lg-3 col-sm-12 col-md-6">
                     <mat-form-field class="field-full-width">
                         <mat-label>Joining Date <sup class="text-danger">*</sup></mat-label>
-                        <input matInput [matDatepicker]="jdate" placeholder="Ex. 6/29/2020" value="" formControlName="joiningDate" />
+                        <input matInput [matDatepicker]="jdate" placeholder="Ex. 6/29/2020" value=""
+                            formControlName="joiningDate" />
                         <mat-datepicker-toggle matSuffix [for]="jdate"></mat-datepicker-toggle>
                         <mat-datepicker #jdate></mat-datepicker>
                     </mat-form-field>
-                    <p style="color: red;" *ngIf="addDoctorDetailsForm.get('joiningDate') && addDoctorDetailsForm.get('joiningDate').touched && addDoctorDetailsForm.get('joiningDate').invalid">
+                    <p style="color: red;"
+                        *ngIf="addDoctorDetailsForm.get('joiningDate') && addDoctorDetailsForm.get('joiningDate').touched && addDoctorDetailsForm.get('joiningDate').invalid">
                         Please enter this field</p>
                 </div>
             </div>
@@ -161,19 +176,23 @@ Description :- this module is used to add doctors details,
                         <div class="col-lg-6 col-md-12 col-sm-12">
                             <mat-form-field class="field-full-width">
                                 <mat-label>From</mat-label>
-                                <input matInput type="time" placeholder="Ex. Dermatologists" value="" class="time" formControlName="morningVisitFrom" />
+                                <input matInput type="time" placeholder="Ex. Dermatologists" value="" class="time"
+                                    formControlName="morningVisitFrom" />
                                 <mat-icon matSuffix color="primary">access_time</mat-icon>
                             </mat-form-field>
-                            <p style="color: red;" *ngIf="addDoctorDetailsForm.get('morningVisitFrom') && addDoctorDetailsForm.get('morningVisitFrom').touched && addDoctorDetailsForm.get('morningVisitFrom').invalid">
+                            <p style="color: red;"
+                                *ngIf="addDoctorDetailsForm.get('morningVisitFrom') && addDoctorDetailsForm.get('morningVisitFrom').touched && addDoctorDetailsForm.get('morningVisitFrom').invalid">
                                 Please enter this field</p>
                         </div>
                         <div class="col-lg-6 col-md-12 col-sm-12">
                             <mat-form-field class="field-full-width">
                                 <mat-label>To</mat-label>
-                                <input matInput type="time" placeholder="Ex. Dermatologists" value="" class="time" formControlName="morningVisitTo" />
+                                <input matInput type="time" placeholder="Ex. Dermatologists" value="" class="time"
+                                    formControlName="morningVisitTo" />
                                 <mat-icon matSuffix color="primary">access_time</mat-icon>
                             </mat-form-field>
-                            <p style="color: red;" *ngIf="addDoctorDetailsForm.get('morningVisitTo') && addDoctorDetailsForm.get('morningVisitTo').touched && addDoctorDetailsForm.get('morningVisitTo').invalid">
+                            <p style="color: red;"
+                                *ngIf="addDoctorDetailsForm.get('morningVisitTo') && addDoctorDetailsForm.get('morningVisitTo').touched && addDoctorDetailsForm.get('morningVisitTo').invalid">
                                 Please enter this field</p>
                         </div>
                     </div>
@@ -185,19 +204,23 @@ Description :- this module is used to add doctors details,
                         <div class="col-lg-6 col-md-12 col-sm-12">
                             <mat-form-field class="field-full-width">
                                 <mat-label>From</mat-label>
-                                <input matInput type="time" placeholder="Ex. Dermatologists" value="" class="time" formControlName="eveningVisitFrom" />
+                                <input matInput type="time" placeholder="Ex. Dermatologists" value="" class="time"
+                                    formControlName="eveningVisitFrom" />
                                 <mat-icon matSuffix color="primary">access_time</mat-icon>
                             </mat-form-field>
-                            <p style="color: red;" *ngIf="addDoctorDetailsForm.get('eveningVisitFrom') && addDoctorDetailsForm.get('eveningVisitFrom').touched && addDoctorDetailsForm.get('eveningVisitFrom').invalid">
+                            <p style="color: red;"
+                                *ngIf="addDoctorDetailsForm.get('eveningVisitFrom') && addDoctorDetailsForm.get('eveningVisitFrom').touched && addDoctorDetailsForm.get('eveningVisitFrom').invalid">
                                 Please enter this field</p>
                         </div>
                         <div class="col-lg-6 col-md-12 col-sm-12">
                             <mat-form-field class="field-full-width">
                                 <mat-label>To</mat-label>
-                                <input matInput type="time" placeholder="Ex. Dermatologists" value="" class="time" formControlName="eveningVisitTo" />
+                                <input matInput type="time" placeholder="Ex. Dermatologists" value="" class="time"
+                                    formControlName="eveningVisitTo" />
                                 <mat-icon matSuffix color="primary">access_time</mat-icon>
                             </mat-form-field>
-                            <p style="color: red;" *ngIf="addDoctorDetailsForm.get('eveningVisitTo') && addDoctorDetailsForm.get('eveningVisitTo').touched && addDoctorDetailsForm.get('eveningVisitTo').invalid">
+                            <p style="color: red;"
+                                *ngIf="addDoctorDetailsForm.get('eveningVisitTo') && addDoctorDetailsForm.get('eveningVisitTo').touched && addDoctorDetailsForm.get('eveningVisitTo').invalid">
                                 Please enter this field</p>
                         </div>
                     </div>
@@ -208,10 +231,12 @@ Description :- this module is used to add doctors details,
                 <div class="col-lg-6 col-md-12 col-sm-12">
                     <mat-form-field class="field-full-width">
                         <mat-label>Address <sup class="text-danger">*</sup></mat-label>
-                        <textarea matInput placeholder="Ex. #83, 6th cross opposite to kfc, jalahalli bangalore" formControlName="address"></textarea>
+                        <textarea matInput placeholder="Ex. #83, 6th cross opposite to kfc, jalahalli bangalore"
+                            formControlName="address"></textarea>
                         <mat-icon matSuffix color="primary">home</mat-icon>
                     </mat-form-field>
-                    <p style="color: red;" *ngIf="addDoctorDetailsForm.get('address') && addDoctorDetailsForm.get('address').touched && addDoctorDetailsForm.get('address').invalid">
+                    <p style="color: red;"
+                        *ngIf="addDoctorDetailsForm.get('address') && addDoctorDetailsForm.get('address').touched && addDoctorDetailsForm.get('address').invalid">
                         Please enter this field</p>
                 </div>
                 <div class="col-lg-6 col-md-12 col-sm-12 mt-3">
@@ -223,16 +248,19 @@ Description :- this module is used to add doctors details,
                                 <input type="tel" matInput placeholder="555-555-1234" formControlName="phoneNumber">
                                 <mat-icon matSuffix color="primary">phone</mat-icon>
                             </mat-form-field>
-                            <p style="color: red;" *ngIf="addDoctorDetailsForm.get('phoneNumber') && addDoctorDetailsForm.get('phoneNumber').touched && addDoctorDetailsForm.get('phoneNumber').invalid">
+                            <p style="color: red;"
+                                *ngIf="addDoctorDetailsForm.get('phoneNumber') && addDoctorDetailsForm.get('phoneNumber').touched && addDoctorDetailsForm.get('phoneNumber').invalid">
                                 {{phoneNumberInputMsg}}</p>
                         </div>
                         <div class="col-lg-6 col-md-12 col-sm-12">
                             <mat-form-field class="field-full-width">
                                 <mat-label>Email Id <sup class="text-danger">*</sup></mat-label>
-                                <input matInput type="email" placeholder="Ex. example@abc.com" value="" formControlName="emailId" />
+                                <input matInput type="email" placeholder="Ex. example@abc.com" value=""
+                                    formControlName="emailId" />
                                 <mat-icon matSuffix color="primary">email</mat-icon>
                             </mat-form-field>
-                            <p style="color: red;" *ngIf="addDoctorDetailsForm.get('emailId') && addDoctorDetailsForm.get('emailId').touched && addDoctorDetailsForm.get('emailId').invalid">
+                            <p style="color: red;"
+                                *ngIf="addDoctorDetailsForm.get('emailId') && addDoctorDetailsForm.get('emailId').touched && addDoctorDetailsForm.get('emailId').invalid">
                                 {{emailIdInputMsg}}</p>
                         </div>
                     </div>
@@ -254,7 +282,8 @@ Description :- this module is used to add doctors details,
                         <!-- <option [ngValue]="null">Select Here</option>
               <option *ngFor="let job of jobsList" [ngValue]="job">{{job.jobTitleName}}</option> -->
                     </mat-form-field>
-                    <p style="color: red;" *ngIf="addDoctorDetailsForm.get('doctorRole') && addDoctorDetailsForm.get('doctorRole').touched && addDoctorDetailsForm.get('doctorRole').invalid">
+                    <p style="color: red;"
+                        *ngIf="addDoctorDetailsForm.get('doctorRole') && addDoctorDetailsForm.get('doctorRole').touched && addDoctorDetailsForm.get('doctorRole').invalid">
                         Please select role</p>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12">
@@ -262,7 +291,8 @@ Description :- this module is used to add doctors details,
                         <mat-label>Pan No <sup class="text-danger">*</sup></mat-label>
                         <input matInput placeholder="Ex. example@abc.com" value="" formControlName="panNo" />
                     </mat-form-field>
-                    <p style="color: red;" *ngIf="addDoctorDetailsForm.get('panNo') && addDoctorDetailsForm.get('panNo').touched && addDoctorDetailsForm.get('panNo').invalid">
+                    <p style="color: red;"
+                        *ngIf="addDoctorDetailsForm.get('panNo') && addDoctorDetailsForm.get('panNo').touched && addDoctorDetailsForm.get('panNo').invalid">
                         Please enter this field</p>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12">
@@ -270,7 +300,8 @@ Description :- this module is used to add doctors details,
                         <mat-label>Aadhar No <sup class="text-danger">*</sup></mat-label>
                         <input matInput placeholder="Ex. example@abc.com" value="" formControlName="aadharNo" />
                     </mat-form-field>
-                    <p style="color: red;" *ngIf="addDoctorDetailsForm.get('aadharNo') && addDoctorDetailsForm.get('aadharNo').touched && addDoctorDetailsForm.get('aadharNo').invalid">
+                    <p style="color: red;"
+                        *ngIf="addDoctorDetailsForm.get('aadharNo') && addDoctorDetailsForm.get('aadharNo').touched && addDoctorDetailsForm.get('aadharNo').invalid">
                         Please enter this field</p>
                 </div>
             </div>

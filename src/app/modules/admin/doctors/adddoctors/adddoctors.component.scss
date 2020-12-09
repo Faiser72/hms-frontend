@@ -17,7 +17,7 @@
 .example-form {
   min-width: 150px;
   max-width: 500px;
-  width: 100%;
+  width    : 100%;
 }
 
 .field-full-width {
@@ -26,32 +26,32 @@
 
 .upload-photo,
 .reset-btn {
-  border-radius: 4px;
-  padding: 5px 40px 5px 40px;
+  border-radius   : 4px;
+  padding         : 5px 40px 5px 40px;
   background-color: var(--main-bg-2-color);
-  color: var(--main-font-1-color);
-  outline: 0;
+  color           : var(--main-font-1-color);
+  outline         : 0;
 }
 
 .profile-holder:hover {
   cursor: pointer;
 }
 
-mat-datepicker-toggle{
+mat-datepicker-toggle {
   outline-style: none;
 }
 
-.mat-radio-button ~ .mat-radio-button {
+.mat-radio-button~.mat-radio-button {
   margin-left: 16px;
 }
 
-.time{
+.time {
   // padding: 5px 0;
-  font-size: 1.5em;
+  font-size   : 1.5em;
   padding-left: 50%;
   // width: 100px;
 }
 
-button{
+button {
   outline: none;
 }

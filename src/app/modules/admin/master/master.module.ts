@@ -21,11 +21,33 @@ import { SchedulehomeComponent } from './schedule/schedulehome/schedulehome.comp
 import { AddscheduleComponent } from './schedule/addschedule/addschedule.component';
 import { EditscheduleComponent } from './schedule/editschedule/editschedule.component';
 import { ListscheduleComponent } from './schedule/listschedule/listschedule.component';
+import { BedmasterComponent } from './wardmaster/bedmaster/bedmaster.component';
+import { RoommasterComponent } from './wardmaster/roommaster/roommaster.component';
+import { WardmasterComponent } from './wardmaster/wardmaster/wardmaster.component';
 
 
 
 @NgModule({
-  declarations: [DepartmentComponent, LabtestmasterComponent, ReceiptcategoryComponent, PaymentcategoryComponent, AddhospitalDetailComponent, HospitalDetailHomeComponent, HospitalDetailListComponent, EditHospitalDetailComponent, SchedulehomeComponent, ListscheduleComponent, EditscheduleComponent, AddscheduleComponent, AddStaffComponent, StaffListComponent, StaffHomeComponent, EditStaffComponent, DoctorrolemasterComponent],
+  declarations: [DepartmentComponent,
+    LabtestmasterComponent,
+    ReceiptcategoryComponent,
+    PaymentcategoryComponent,
+    AddhospitalDetailComponent,
+    HospitalDetailHomeComponent,
+    HospitalDetailListComponent,
+    EditHospitalDetailComponent,
+    SchedulehomeComponent,
+    ListscheduleComponent,
+    EditscheduleComponent,
+    AddscheduleComponent,
+    AddStaffComponent,
+    StaffListComponent,
+    StaffHomeComponent,
+    EditStaffComponent,
+    DoctorrolemasterComponent,
+    WardmasterComponent,
+    RoommasterComponent,
+    BedmasterComponent],
   imports: [
     CommonModule,
     MatDividerModule,

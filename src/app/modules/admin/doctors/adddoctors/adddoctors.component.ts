@@ -96,7 +96,7 @@ export class AdddoctorsComponent implements OnInit {
       experience: [null, [Validators.required]],
       joiningDate: [null, [Validators.required]],
       leavingDate: "",
-      registerNo:[null, [Validators.required]],
+      registerNo: [null, [Validators.required]],
       morningVisitFrom: [null, [Validators.required]],
       morningVisitTo: [null, [Validators.required]],
       eveningVisitFrom: [null, [Validators.required]],
