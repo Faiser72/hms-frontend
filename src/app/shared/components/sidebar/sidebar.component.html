@@ -92,13 +92,13 @@ Description :- this is the side bar component, this component is used to add oth
                 <mat-icon> receipt</mat-icon>Receipt Category
             </a>
             <a mat-list-item routerLinkActive="list-item-active" routerLink="/wardtypemaster">
-                <mat-icon> receipt</mat-icon>Ward
+                <mat-icon>kitchen</mat-icon>Ward
             </a>
             <a mat-list-item routerLinkActive="list-item-active" routerLink="/roommaster">
-                <mat-icon> receipt</mat-icon>Room
+                <mat-icon>meeting_room</mat-icon>Room
             </a>
             <a mat-list-item routerLinkActive="list-item-active" routerLink="/bedmaster">
-                <mat-icon> receipt</mat-icon>Bed
+                <mat-icon><i class="fa fa-bed" aria-hidden="true"></i></mat-icon>Bed
             </a>
 
         </div>
@@ -140,7 +140,7 @@ Description :- this is the side bar component, this component is used to add oth
     <span>
         <mat-list-item (click)="showIpdSubmenu = !showIpdSubmenu" class="parent mb-1"
             (click)="toggleIpdSubmenu('ipd_submenu')">
-            <mat-icon>local_hospital</mat-icon>
+            <mat-icon><i class="fa fa-medkit" aria-hidden="true"></i></mat-icon>
             <span class="full-width">Ipd</span>
             <mat-icon class="menu-button" [ngClass]="{'rotated' : showIpdSubmenu}">expand_more</mat-icon>
         </mat-list-item>
@@ -149,13 +149,13 @@ Description :- this is the side bar component, this component is used to add oth
                 <mat-icon> <i class="fa fa-bed" aria-hidden="true"></i></mat-icon>Bed Allotment
             </a>
             <a mat-list-item routerLinkActive="list-item-active" routerLink="/preliminary">
-                <mat-icon> <i class="fa fa-bed" aria-hidden="true"></i></mat-icon>Preliminary
+                <mat-icon><i class="fa fa-stethoscope" aria-hidden="true"></i></mat-icon>Preliminary
             </a>
             <a mat-list-item routerLinkActive="list-item-active" routerLink="/dischargipd">
-                <mat-icon> <i class="fa fa-bed" aria-hidden="true"></i></mat-icon>Discharge
+                <mat-icon> <i class="fa fa-eject" aria-hidden="true"></i></mat-icon>Discharge
             </a>
             <a mat-list-item routerLinkActive="list-item-active" routerLink="/diagnosisipd">
-                <mat-icon> <i class="fa fa-bed" aria-hidden="true"></i></mat-icon>Diagnosis
+                <mat-icon><i class="fa fa-user-md" aria-hidden="true"></i></mat-icon>Diagnosis
             </a>
         </div>
     </span>
