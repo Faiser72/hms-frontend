@@ -55,3 +55,14 @@
   button{
     outline: none;
   }
+
+  .autocompletess{
+    background-color: inherit;
+  }
+
+  .ui-autocomplete .inputTest {
+    background-color: red;
+}
+.panelTest .ui-autocomplete-items .ui-state-highlight {
+    background-color: blue;
+}

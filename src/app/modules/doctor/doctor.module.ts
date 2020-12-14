@@ -29,6 +29,7 @@ import { DischargeComponent } from './surgery/discharge/discharge.component';
 import { PresurgerycareComponent } from './surgery/presurgerycare/presurgerycare.component';
 import { EditprescriptionComponent } from './prescription/editprescription/editprescription.component';
 import { ListprescriptionComponent } from './prescription/listprescription/listprescription.component';
+import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 
 
 @NgModule({
@@ -79,6 +80,7 @@ import { ListprescriptionComponent } from './prescription/listprescription/listp
     MatFormFieldModule,
     MatSortModule,
     ReferenceModule,
+    AutocompleteLibModule
   ]
 })
 export class DoctorModule { }

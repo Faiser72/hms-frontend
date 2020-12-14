@@ -23,17 +23,17 @@ export class AddsurgeryComponent implements OnInit {
     // private appointmentService: AppointmentService,
     private router: Router,
     // private appComponent: AppComponent
-    ) {
-      var today = new Date();
-      var dd = String(today.getDate()).padStart(2, '0');
-      var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-      var yyyy = today.getFullYear();
-  
-      this.today = yyyy + '-' + mm + '-' + dd;
+  ) {
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
 
-     }
+    this.today = yyyy + '-' + mm + '-' + dd;
 
-  ngOnInit() {    
+  }
+
+  ngOnInit() {
     this.addAppointmentFormBuilder();
 
     // this.patientService.getPatientList().subscribe((data: any) => {
@@ -58,6 +58,32 @@ export class AddsurgeryComponent implements OnInit {
     // });
   }
 
+  // autocomplete starts here
+  keyword = 'name';
+  public anesthesia = [
+    {
+      id: 1,
+      name: 'Local',
+    },
+    {
+      id: 2,
+      name: 'General',
+    },
+  ];
+    selectEvent(item) {
+    // do something with selected item
+  }
+
+  onChangeSearch(search: string) {
+    // fetch remote data from here
+    // And reassign the 'data' which is binded to 'data' property.
+  }
+
+  onFocused(e) {
+    // do something
+  }
+  // autocomplete ends here
+
   // patientDetailsById(patient) {
   //   this.singlePatient = patient.value;
   //   this.addSurgeryForm.patchValue({ patientName: this.singlePatient.patientName, phoneNumber: this.singlePatient.phoneNumber })
@@ -75,14 +101,15 @@ export class AddsurgeryComponent implements OnInit {
       oprationTheatre: [null, [Validators.required, Validators.minLength(3)]],
       anesthesist: [null, [Validators.required, Validators.minLength(3)]],
       scrubNurse: [null, [Validators.required, Validators.minLength(3)]],
-      helper: [null, [Validators.required, Validators.minLength(3)]],
+      circulatoryNurse: [null, [Validators.required, Validators.minLength(3)]],
       followUp: [null, [Validators.required, Validators.minLength(3)]],
       oprativeNotes: [null, [Validators.required, Validators.minLength(3)]],
       // phoneNumber: [
       //   null,
       //   [Validators.required, Validators.pattern(this.phonePattern)],
       // ],
-      assistantSurgeon:[null,[Validators.required]],
+      assistantSurgeon: [null, [Validators.required]],
+      typeOfAnesthesia: [null, [Validators.required]],
     });
   }
 
@@ -155,5 +182,10 @@ export class AddsurgeryComponent implements OnInit {
   //     return this.appointmentmentTimeValidation = false;
   //   }
   // }
+
+  saveSurgeryDetails(){
+    console.log(this.addSurgeryForm.value);
+    
+  }
 
 }

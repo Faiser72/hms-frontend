@@ -8,7 +8,7 @@ import { isNull, isNullOrUndefined } from 'util';
 
 export class Diagnosis {
   date: any;
-  checkUp: any;
+  findings: any;
   doctorsAdvice: any;
   remarks: any;
 }
@@ -122,7 +122,7 @@ export class PatientdiagnosisipdComponent implements OnInit {
     // for multile contact form starts
     this.newDynamic = {
       date: "",
-      checkUp: "",
+      findings: "",
       doctorsAdvice: "",
       remarks: ""
     };
@@ -132,17 +132,17 @@ export class PatientdiagnosisipdComponent implements OnInit {
 
   getRowDetails(data: any) {
     let date: any = [];
-    let checkUp: any = [];
+    let findings: any = [];
     let doctorsAdvice: any = [];
     let remarks: any = [];
     date = data.object.date.split(',')
-    checkUp = data.object.checkUp.split(',')
+    findings = data.object.findings.split(',')
     doctorsAdvice = data.object.doctorsAdvice.split(',')
     remarks = data.object.remarks.split(',')
 
-    if (date.length == checkUp.length && doctorsAdvice.length == remarks.length) {
+    if (date.length == findings.length && doctorsAdvice.length == remarks.length) {
       for (let i = 0; i < date.length; i++) {
-        this.newDynamic = { drugName: date[i], checkUp: checkUp[i], doctorsAdvice: doctorsAdvice[i], remarks: remarks[i] };
+        this.newDynamic = { drugName: date[i], findings: findings[i], doctorsAdvice: doctorsAdvice[i], remarks: remarks[i] };
         this.dynamicArray.push(this.newDynamic);
       }
     } else {
@@ -153,7 +153,7 @@ export class PatientdiagnosisipdComponent implements OnInit {
   addDiagnosisFormBuilder() {
     this.addDiagnosisForm = this.fb.group({
       date: [null],
-      checkUp: [null],
+      findings: [null],
       doctorsAdvice: [null],
       remarks: [null],
     });
@@ -162,7 +162,7 @@ export class PatientdiagnosisipdComponent implements OnInit {
   addRow() {
     this.newDynamic = {
       date: "",
-      checkUp: "",
+      findings: "",
       doctorsAdvice: "",
       remarks: "",
     };
@@ -172,19 +172,19 @@ export class PatientdiagnosisipdComponent implements OnInit {
     return true;
   }
 
-  checkUpRow(checkUpValue: string, i: number) {
-    if (checkUpValue != "" && checkUpValue.replace(/\s+/g, '').length) {
-      if (checkUpValue.match(/^[ A-Za-z0-9_/-]*$/)) {
-        document.getElementById("checkUpMsg" + i).innerHTML = "";
+  findingsRow(findingsValue: string, i: number) {
+    if (findingsValue != "" && findingsValue.replace(/\s+/g, '').length) {
+      if (findingsValue.match(/^[ A-Za-z0-9_/-]*$/)) {
+        document.getElementById("findingsMsg" + i).innerHTML = "";
         return true;
       } else {
-        document.getElementById("checkUpMsg" + i).innerHTML = "Please enter only alphanumeric and -,_,/,.";
+        document.getElementById("findingsMsg" + i).innerHTML = "Please enter only alphanumeric and -,_,/,.";
         return false;
       }
     } else {
-      if (!isNullOrUndefined(document.getElementById("checkUpMsg" + i))) {
-        document.getElementById("checkUpMsg" + i).innerHTML = "Please enter this field.";
-        this.dynamicArray[i].checkUp = '';
+      if (!isNullOrUndefined(document.getElementById("findingsMsg" + i))) {
+        document.getElementById("findingsMsg" + i).innerHTML = "Please enter this field.";
+        this.dynamicArray[i].findings = '';
       }
       return false;
     }
@@ -243,19 +243,19 @@ export class PatientdiagnosisipdComponent implements OnInit {
     this.diagnosisDetailsFlag = false;
 
     if (i > -1) {
-      this.checkUpRow(this.dynamicArray[i].checkUp, i);
+      this.findingsRow(this.dynamicArray[i].findings, i);
       this.dateRow(this.dynamicArray[i].date, i);
       this.doctorsAdviceRow(this.dynamicArray[i].doctorsAdvice, i);
       this.remarksRow(this.dynamicArray[i].remarks, i)
     }
 
     this.dynamicArray.every((object, index) => {
-      let checkUpRowFlag = this.checkUpRow(object.checkUp, index);
+      let findingsRowFlag = this.findingsRow(object.findings, index);
       let dateRowFlag = this.dateRow(object.date, index);
       let doctorsAdviceFlag = this.doctorsAdviceRow(object.doctorsAdvice, index);
       let remarksRowFlag = this.remarksRow(object.remarks, index);
 
-      if (checkUpRowFlag && remarksRowFlag && doctorsAdviceFlag && dateRowFlag) {
+      if (findingsRowFlag && remarksRowFlag && doctorsAdviceFlag && dateRowFlag) {
         this.diagnosisDetailsFlag = true;
         return true;
       } else {
@@ -271,24 +271,24 @@ export class PatientdiagnosisipdComponent implements OnInit {
 
 
   // date: any;
-  // checkUp: any;
+  // findings: any;
   // doctorsAdvice: any;
   // remarks: any;
   diagnosisDetails(): boolean {
     let date: any = [];
-    let checkUp: any = [];
+    let findings: any = [];
     let doctorsAdvice: any = [];
     let remarks: any = [];
     this.dynamicArray.forEach((object, i) => {
       date[i] = object.date;
-      checkUp[i] = object.checkUp;
+      findings[i] = object.findings;
       doctorsAdvice[i] = object.doctorsAdvice;
       remarks[i] = object.remarks;
     });
 
     this.addDiagnosisForm.patchValue({
       date: date.join(),
-      checkUp: checkUp.join(),
+      findings: findings.join(),
       doctorsAdvice: doctorsAdvice.join(),
       remarks: remarks.join()
     });

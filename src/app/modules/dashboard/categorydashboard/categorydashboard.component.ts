@@ -33,43 +33,19 @@ export class CategorydashboardComponent implements OnInit {
   }
 
   routeToDoctors() {
-    this.route.navigate(['doctorshome/listdoctor'])
+    // this.route.navigate(['doctorshome/listdoctor'])
   }
 
   routeToPatients() {
-    this.route.navigate(['patienthome/listpatient'])
+    // this.route.navigate(['patienthome/listpatient'])
   }
 
   routeToAppointment() {
-    this.route.navigate(['appointmenthome/listappointment'])
+    // this.route.navigate(['appointmenthome/listappointment'])
   }
 
   routeToFrontDesk() {
     // this.route.navigate(['home/frontDeskHome/listFrontDesk'])
-  }
-
-  routeToMyAppointment() {
-    this.route.navigate(['doctorAppointment'])
-  }
-
-  routeToMyPatients() {
-    this.route.navigate(['myPatientList'])
-  }
-
-  // routeToPrint() {
-  //   this.route.navigate(['home/printhome'])
-  // }
-
-  // routeToReorts() {
-  //   this.route.navigate(['home/reportshome'])
-  // }
-
-  isAdminRole(){
-    return true;
-  }
-
-  isUserRole(){
-    return true;
   }
 
 }

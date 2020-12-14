@@ -231,18 +231,57 @@ Description :- this component is used to add nwe surgery,
                     </mat-form-field> -->
 
                     <mat-form-field class="field-full-width">
-                        <mat-label>Helper <sup class="text-danger">*</sup></mat-label>
-                        <mat-select formControlName="helper">
+                        <mat-label>Circulatory Nurse <sup class="text-danger">*</sup></mat-label>
+                        <mat-select formControlName="circulatoryNurse">
                             <mat-option *ngFor="let patient of patientDetailsList" [value]="patient">
                                 {{patient.patientNumber}}
                             </mat-option>
                         </mat-select>
                     </mat-form-field>
-                    <p style="color: red;" *ngIf="addSurgeryForm.get('helper') && addSurgeryForm.get('helper').touched && addSurgeryForm.get('helper').invalid">
+                    <p style="color: red;" *ngIf="addSurgeryForm.get('circulatoryNurse') && addSurgeryForm.get('circulatoryNurse').touched && addSurgeryForm.get('circulatoryNurse').invalid">
                         Please Select Departmentr</p>
                 </div>
             </div>
 
+            <div class="row d-flex justify-content-around mt-4 ml-5 mr-5 w-50 mx-auto">
+
+                <div class="col-lg-12 col-md-12 col-sm-12 mx-auto">
+                    <!-- <mat-form-field class="field-full-width">
+                        <mat-label>Type Of Anesthesia <sup class="text-danger">*</sup></mat-label>
+                        <mat-select formControlName="typeOfAnesthesia">
+                            <mat-option *ngFor="let patient of patientDetailsList" [value]="patient">
+                                {{patient.patientNumber}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <p style="color: red;" *ngIf="addSurgeryForm.get('typeOfAnesthesia') && addSurgeryForm.get('typeOfAnesthesia').touched && addSurgeryForm.get('typeOfAnesthesia').invalid">
+                        Please Select Type Of anesthesia</p> -->
+                        <div class="ng-autocomplete">
+                            <ng-autocomplete 
+                              [data]="anesthesia"
+                              [searchKeyword]="keyword"
+                              placeHolder="Select Type Of Anesthesia"
+                              (selected)='selectEvent($event)'
+                              (inputChanged)='onChangeSearch($event)'
+                              (inputFocused)='onFocused($event)'
+                              historyIdentifier="countries"
+                              [itemTemplate]="itemTemplate"
+                              [notFoundTemplate]="notFoundTemplate"
+                              formControlName="typeOfAnesthesia" class="autocompletess">
+                            </ng-autocomplete>
+                          
+                            <ng-template #itemTemplate let-item>
+                              <a [innerHTML]="item.name"></a>
+                            </ng-template>
+                          
+                            <ng-template #notFoundTemplate let-notFound >
+                              <div [innerHTML]="notFound"></div>
+                            </ng-template>
+                          </div>
+                          <p style="color: red;" *ngIf="addSurgeryForm.get('typeOfAnesthesia') && addSurgeryForm.get('typeOfAnesthesia').touched && addSurgeryForm.get('typeOfAnesthesia').invalid">
+                            Please Select Type Of anesthesia</p>
+                </div>
+            </div>
 
             <div class="row d-flex justify-content-around mt-4 ml-5 mr-5 w-50 mx-auto">
 
@@ -273,7 +312,7 @@ Description :- this component is used to add nwe surgery,
 
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-around">
-                    <button type="submit" mat-raised-button color="primary">
+                    <button type="submit" mat-raised-button color="primary" [disabled]='addSurgeryForm.invalid' (click)="saveSurgeryDetails()">
                         <mat-icon class="mr-2">save</mat-icon>Submit
                     </button>
                     <button type="reset" mat-raised-button color="accent">
