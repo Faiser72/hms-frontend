@@ -9,7 +9,9 @@ import { DOCUMENT } from "@angular/common";
 })
 export class DefaultComponent implements OnInit {
   sideBarOpen;
-  isSmallMobileDevice: MediaQueryList = window.matchMedia("(max-width: 599px)")
+  isSmallMobileDevice: MediaQueryList = window.matchMedia("(max-width: 599px)");
+  hasBackValue: boolean = true;
+
 
   constructor(
     private router: Router,
@@ -18,10 +20,19 @@ export class DefaultComponent implements OnInit {
   ) {
     if (!this.isSmallMobileDevice.matches) {
       this.sideBarOpen = true;
-
     }
     else {
       this.sideBarOpen = false;
+    }
+  }
+
+  hasBack() {
+    if (!this.isSmallMobileDevice.matches) {
+      return this.hasBackValue = false;
+
+    }
+    else {
+      return this.hasBackValue = true;
 
     }
   }

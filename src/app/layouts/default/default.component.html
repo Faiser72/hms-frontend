@@ -11,7 +11,7 @@ Description :- this is the main component which is used to load all the componen
  -->
 
 <app-header (toggleSideBarForMe)="sideBarToggler()" (darkModeSwitched)="switchMode($event)"></app-header>
-<mat-drawer-container class="container-fluid">
+<mat-drawer-container class="container-fluid" [hasBackdrop]='hasBack()'>
     <mat-drawer mode="side" [opened]="sideBarOpen">
         <app-sidebar></app-sidebar>
     </mat-drawer>
